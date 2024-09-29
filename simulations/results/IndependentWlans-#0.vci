@@ -1,0 +1,253 @@
+file 11091 1727642971                                           
+version 3
+run IndependentWlans-0-20240930-02:19:25-20616
+attr configname IndependentWlans
+attr datetime 20240930-02:19:25
+attr datetimef 20240930-021925
+attr experiment IndependentWlans
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network
+attr processid 20616
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config description "Two independent WLANs on different radio channels"
+config *.useEthernetSwitching false
+config *.useRouting false
+config network Network
+config sim-time-limit 400s
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config **.constraintAreaMinZ 0m
+config **.constraintAreaMaxX 500m
+config **.constraintAreaMaxY 300m
+config **.constraintAreaMaxZ 0m
+config *.*.mobility.typename StationaryMobility
+config *.wirelessHost.mobility.initialX 50m
+config *.wirelessHost.mobility.initialY 100m
+config *.accessPoint1.mobility.initialX 150m
+config *.accessPoint1.mobility.initialY 250m
+config **.analogModel.ignorePartialInterference true
+config *.accessPoint1.wlan[0].address "\"001111111111\""
+config *.accessPoint1.wlan[0].mgmt.ssid "\"alpha\""
+config *.accessPoint1.wlan[0].radio.channelNumber 0
+config *.wirelessHost.wlan[0].mgmt.accessPointAddress "\"001111111111\""
+config *.wirelessHost.wlan[0].radio.channelNumber 0
+config *.wirelessHost1.wlan[0].mgmt.accessPointAddress "\"001111111111\""
+config *.host2.wlan[0].radio.channelNumber 0
+config *.host*.**.mgmt.typename Ieee80211MgmtStaSimplified
+config *.host*.**.agent.typename ""
+config *.accessPoint*.**.mgmt.typename Ieee80211MgmtApSimplified
+config **.wlan*.bitrate 11Mbps
+config **.host*.numApps 2
+config **.app[0].typename PingApp
+config *.sensorNode.app[0].destAddr "\"wirelessHost\""
+config **.app[1].typename PingApp
+config *.wirelessHost.app[1].destAddr "\"wirelessHost1\""
+config **.printPing true
+config *.useEthernetSwitching false
+config *.useRouting true
+config *.configurator.config "xmldoc(\"network.xml\")"
+
+vector 0 Network.accessPoint1.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 1 Network.accessPoint1.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 2 Network.accessPoint1.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 3 Network.accessPoint1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 4 Network.accessPoint1.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 5 Network.wirelessHost.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 6 Network.wirelessHost.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 7 Network.wirelessHost.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 8 Network.wirelessHost.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 9 Network.wirelessHost.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 10 Network.wirelessHost.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 11 Network.wirelessHost.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 12 Network.wirelessHost.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 13 Network.sensorNode.wlan[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 14 Network.sensorNode.wlan[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 15 Network.sensorNode.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 16 Network.sensorNode.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 17 Network.sensorNode.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 18 Network.wirelessHost1.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 19 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 20 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 21 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 22 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 23 Network.wirelessHost1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 24 Network.wirelessHost1.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 25 Network.wirelessHost1.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 26 Network.sensorNode.energyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source powerConsumptionChanged
+attr title "Power consumption"
+attr unit W
+vector 27 Network.accessPoint1.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+0	10431 18 0 0 0 0 2 0 0 0 0
+1	10449 45 0 0 0 0 5 0 0 0 0
+2	10494 45 0 0 0 0 5 0 0 0 0
+3	10539 18 0 0 0 0 2 0 0 0 0
+4	10557 18 0 0 0 0 2 0 0 0 0
+5	10575 18 0 0 0 0 2 0 0 0 0
+6	10593 45 0 0 0 0 5 0 0 0 0
+7	10638 45 0 0 0 0 5 0 0 0 0
+8	10683 18 0 0 0 0 2 0 0 0 0
+9	10701 18 0 0 0 0 2 0 0 0 0
+10	10719 10 0 0 0 0 1 0 0 0 0
+11	10729 10 0 0 0 0 1 0 0 0 0
+12	10739 10 0 0 0 0 1 0 0 0 0
+13	10749 50 0 0 0 0 5 0 0 0 0
+14	10799 50 0 0 0 0 5 0 0 0 0
+15	10849 10 0 0 0 0 1 0 0 0 0
+16	10859 10 0 0 0 0 1 0 0 0 0
+17	10869 10 0 0 0 0 1 0 0 0 0
+18	10879 20 0 0 0 0 2 0 0 0 0
+19	10899 50 0 0 0 0 5 0 0 0 0
+20	10949 50 0 0 0 0 5 0 0 0 0
+21	10999 20 0 0 0 0 2 0 0 0 0
+22	11019 20 0 0 0 0 2 0 0 0 0
+23	11039 10 0 0 0 0 1 0 0 0 0
+24	11049 10 0 0 0 0 1 0 0 0 0
+25	11059 10 0 0 0 0 1 0 0 0 0
+26	11069 10 0 0 0 0 1 0 0 0 0
+27	11079 10 0 0 0 0 1 0 0 0 0
+

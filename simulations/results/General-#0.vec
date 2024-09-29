@@ -1,0 +1,2417 @@
+version 3
+run General-0-20240930-02:37:56-21608
+attr configname General
+attr datetime 20240930-02:37:56
+attr datetimef 20240930-023756
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network
+attr processid 21608
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config network Network
+config sim-time-limit 400s
+config **.addDefaultRoutes false
+config **.*Host*.numApps 3
+config **.*Host*.app[0].typename UdpEchoApp
+config **.*Host*.app[0].localPort 1000
+config **.*Host*.app[*].typename UdpBasicApp
+config **.wiredHost1.app[1].destAddresses "\"wirelessHost1\""
+config **.wiredHost1.app[2].destAddresses "\"wiredHost2\""
+config **.wiredHost2.app[1].destAddresses "\"wirelessHost1\""
+config **.wiredHost2.app[2].destAddresses "\"wiredHost1\""
+config **.wirelessHost1.app[1].destAddresses "\"wiredHost1\""
+config **.wirelessHost1.app[2].destAddresses "\"wiredHost2\""
+config **.*Host*.app[1..].destPort 1000
+config **.*Host*.app[1..].messageLength 10B
+config **.*Host*.app[1..].sendInterval 1s
+config **.*Host*.app[1..].stopTime 300s
+config **.initialZ 0m
+
+vector 0 Network.wirelessHost1.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 1 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 2 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 3 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 4 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 5 Network.wirelessHost1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 6 Network.wirelessHost1.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 7 Network.wirelessHost1.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 8 Network.wiredHost1.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 9 Network.wiredHost1.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 10 Network.wiredHost1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 11 Network.wiredHost1.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 12 Network.wiredHost1.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 13 Network.wiredHost2.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 14 Network.wiredHost2.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 15 Network.wiredHost2.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 16 Network.wiredHost2.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 17 Network.wiredHost2.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 18 Network.router.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 19 Network.router.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 20 Network.router.eth[1].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 21 Network.router.eth[1].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 22 Network.accessPoint.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 23 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 24 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 25 Network.accessPoint.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 26 Network.accessPoint.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 27 Network.accessPoint.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 28 Network.accessPoint.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 29 Network.accessPoint.eth[1].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 30 Network.accessPoint.eth[1].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 31 Network.wirelessHost1.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 32 Network.wirelessHost1.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 33 Network.accessPoint.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 34 Network.accessPoint.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 35 Network.wirelessHost1.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 36 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 37 Network.accessPoint.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 38 Network.accessPoint.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 39 Network.wirelessHost1.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 40 Network.accessPoint.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 41 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 42 Network.accessPoint.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 43 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 44 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 45 Network.accessPoint.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 46 Network.accessPoint.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 47 Network.accessPoint.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 48 Network.accessPoint.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 49 Network.accessPoint.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 50 Network.accessPoint.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 51 Network.accessPoint.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 52 Network.accessPoint.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 53 Network.wirelessHost1.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 54 Network.wirelessHost1.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 55 Network.wirelessHost1.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 56 Network.wirelessHost1.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 57 Network.wirelessHost1.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 58 Network.wirelessHost1.wlan[0].agent sentRequest:vector ETV
+attr recordingmode vector
+attr title "sent requests"
+vector 59 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 60 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 61 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 62 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 63 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 64 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 65 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 66 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 67 Network.wirelessHost1.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 68 Network.wirelessHost1.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 69 Network.wirelessHost1.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 70 Network.wirelessHost1.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 71 Network.wirelessHost1.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 72 Network.wirelessHost1.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 73 Network.wirelessHost1.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 74 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 75 Network.accessPoint.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 76 Network.accessPoint.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 77 Network.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 78 Network.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 79 Network.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 80 Network.accessPoint.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 81 Network.accessPoint.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 82 Network.wirelessHost1.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 83 Network.wirelessHost1.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 84 Network.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 85 Network.wirelessHost1.wlan[0].agent acceptConfirm:vector ETV
+attr recordingmode vector
+attr title "accepted confirms"
+vector 86 Network.wirelessHost1.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 87 Network.wirelessHost1.app[1] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 88 Network.wirelessHost1.app[2] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 89 Network.wiredHost1.app[1] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 90 Network.wiredHost1.app[2] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 91 Network.wiredHost2.app[1] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 92 Network.wiredHost2.app[2] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 93 Network.wirelessHost1.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 94 Network.wiredHost1.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 95 Network.wiredHost2.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 96 Network.wirelessHost1.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 97 Network.wiredHost1.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 98 Network.wiredHost2.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 99 Network.wiredHost1.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 100 Network.wiredHost2.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 101 Network.wirelessHost1.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 102 Network.wiredHost1.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 103 Network.wiredHost1.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 104 Network.wiredHost1.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 105 Network.wiredHost1.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 106 Network.wiredHost1.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 107 Network.wiredHost1.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 108 Network.wiredHost2.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 109 Network.wiredHost2.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 110 Network.wiredHost2.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 111 Network.wiredHost2.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 112 Network.wiredHost2.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 113 Network.wiredHost2.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 114 Network.wiredHost1.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 115 Network.wiredHost2.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 116 Network.accessPoint.eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 117 Network.accessPoint.eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 118 Network.router.eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 119 Network.router.eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 120 Network.accessPoint.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 121 Network.router.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 122 Network.router.ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, packetBytes"
+vector 123 Network.accessPoint.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 124 Network.router.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 125 Network.accessPoint.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 126 Network.accessPoint.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 127 Network.accessPoint.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 128 Network.accessPoint.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 129 Network.accessPoint.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 130 Network.accessPoint.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 131 Network.router.eth[1].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 132 Network.router.eth[1].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 133 Network.router.eth[1].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 134 Network.router.eth[1].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 135 Network.router.eth[1].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 136 Network.router.eth[1].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 137 Network.accessPoint.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 138 Network.accessPoint.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 139 Network.router.eth[1].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 140 Network.router.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 141 Network.router.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 142 Network.wiredHost2.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 143 Network.wiredHost2.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 144 Network.wiredHost2.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+0	0	0	0
+0	0	0	0
+0	40	0.280829011113	1
+0	44	0.280867011113	0
+0	119	0.580829011113	1
+0	137	0.580916525493	0
+0	159	0.581702525493	1
+0	177	0.581790039873	0
+0	203	0.582696039873	1
+0	221	0.582783554253	0
+0	354	1	1
+1	0	0	0
+1	0	0	0
+1	0	0	0
+1	0	0	0
+1	0	0	0
+1	38	0.280829011113	1
+1	40	0.280829011113	0
+1	116	0.580829011113	1
+1	119	0.580829011113	0
+1	148	0.581128525493	1
+1	159	0.581702525493	0
+1	191	0.582362039873	1
+1	203	0.582696039873	0
+1	348	1	1
+1	349	1	2
+1	354	1	1
+1	354	1	0
+2	0	0	0
+2	0	0	0
+2	0	0	0
+2	0	0	0
+2	0	0	0
+2	38	0.280829011113	256
+2	40	0.280829011113	0
+2	116	0.580829011113	272
+2	119	0.580829011113	0
+2	148	0.581128525493	272
+2	159	0.581702525493	0
+2	191	0.582362039873	288
+2	203	0.582696039873	0
+2	348	1	512
+2	349	1	1024
+2	354	1	512
+2	354	1	0
+3	0	0	0
+3	0	0	0
+3	40	0.280829011113	1
+3	44	0.280867011113	0
+3	119	0.580829011113	1
+3	137	0.580916525493	0
+3	159	0.581702525493	1
+3	177	0.581790039873	0
+3	203	0.582696039873	1
+3	221	0.582783554253	0
+3	354	1	1
+3	354	1	2
+4	0	0	0
+4	0	0	0
+4	38	0.280829011113	1
+4	39	0.280829011113	0
+4	116	0.580829011113	1
+4	118	0.580829011113	0
+4	148	0.581128525493	1
+4	150	0.581138525493	0
+4	155	0.581172525493	1
+4	158	0.581702525493	0
+4	191	0.582362039873	1
+4	194	0.582372039873	0
+4	199	0.582406039873	1
+4	202	0.582696039873	0
+4	348	1	1
+4	353	1	0
+5	0	0	0
+6	0	0	0
+7	0	0	0
+8	0	0	0
+8	0	0	0
+8	0	0	0
+8	0	0	0
+8	0	0	0
+8	350	1	0
+8	351	1	1
+8	373	1.00000672	0
+9	0	0	0
+9	0	0	0
+9	0	0	0
+9	0	0	0
+9	0	0	0
+9	350	1	0
+9	351	1	368
+9	373	1.00000672	0
+10	0	0	0
+11	0	0	0
+12	0	0	0
+13	0	0	0
+13	0	0	0
+13	0	0	0
+13	0	0	0
+13	0	0	0
+13	352	1	0
+13	385	1.00001162	0
+13	386	1.00001162	1
+14	0	0	0
+14	0	0	0
+14	0	0	0
+14	0	0	0
+14	0	0	0
+14	352	1	0
+14	385	1.00001162	0
+14	386	1.00001162	448
+15	0	0	0
+16	0	0	0
+17	0	0	0
+18	0	0	0
+18	0	0	0
+18	0	0	0
+18	0	0	0
+18	0	0	0
+19	0	0	0
+19	0	0	0
+19	0	0	0
+19	0	0	0
+19	0	0	0
+20	0	0	0
+20	0	0	0
+20	0	0	0
+20	0	0	0
+20	0	0	0
+20	371	1.00000581	0
+21	0	0	0
+21	0	0	0
+21	0	0	0
+21	0	0	0
+21	0	0	0
+21	371	1.00000581	0
+22	0	0	0
+22	0	0	0
+22	10	0.085794561985	1
+22	14	0.085840561985	0
+22	27	0.185794561985	1
+22	31	0.185840561985	0
+22	51	0.281297768303	1
+22	68	0.281389282683	0
+22	72	0.285794561985	1
+22	76	0.285840561985	0
+22	88	0.385794561985	1
+22	92	0.385840561985	0
+22	102	0.485794561985	1
+22	106	0.485840561985	0
+22	139	0.581085768303	1
+22	157	0.581173282683	0
+22	179	0.582319282683	1
+22	201	0.582406797063	0
+22	223	0.583352797063	1
+22	241	0.583440311443	0
+22	245	0.585794561985	1
+22	249	0.585840561985	0
+22	270	0.685794561985	1
+22	274	0.685840561985	0
+22	283	0.785794561985	1
+22	287	0.785840561985	0
+22	296	0.885794561985	1
+22	300	0.885840561985	0
+22	309	0.985794561985	1
+22	313	0.985840561985	0
+23	0	0	0
+23	0	0	0
+23	0	0	0
+23	0	0	0
+23	0	0	0
+23	8	0.085794561985	1
+23	10	0.085794561985	0
+23	25	0.185794561985	1
+23	27	0.185794561985	0
+23	49	0.280867768303	1
+23	51	0.281297768303	0
+23	70	0.285794561985	1
+23	72	0.285794561985	0
+23	86	0.385794561985	1
+23	88	0.385794561985	0
+23	100	0.485794561985	1
+23	102	0.485794561985	0
+23	128	0.580871768303	1
+23	139	0.581085768303	0
+23	168	0.581745282683	1
+23	179	0.582319282683	0
+23	212	0.582738797063	1
+23	223	0.583352797063	0
+23	243	0.585794561985	1
+23	245	0.585794561985	0
+23	268	0.685794561985	1
+23	270	0.685794561985	0
+23	281	0.785794561985	1
+23	283	0.785794561985	0
+23	294	0.885794561985	1
+23	296	0.885794561985	0
+23	307	0.985794561985	1
+23	309	0.985794561985	0
+23	372	1.00000581	1
+23	397	1.00001253	2
+24	0	0	0
+24	0	0	0
+24	0	0	0
+24	0	0	0
+24	0	0	0
+24	8	0.085794561985	384
+24	10	0.085794561985	0
+24	25	0.185794561985	384
+24	27	0.185794561985	0
+24	49	0.280867768303	384
+24	51	0.281297768303	0
+24	70	0.285794561985	384
+24	72	0.285794561985	0
+24	86	0.385794561985	384
+24	88	0.385794561985	0
+24	100	0.485794561985	384
+24	102	0.485794561985	0
+24	128	0.580871768303	272
+24	139	0.581085768303	0
+24	168	0.581745282683	272
+24	179	0.582319282683	0
+24	212	0.582738797063	288
+24	223	0.583352797063	0
+24	243	0.585794561985	384
+24	245	0.585794561985	0
+24	268	0.685794561985	384
+24	270	0.685794561985	0
+24	281	0.785794561985	384
+24	283	0.785794561985	0
+24	294	0.885794561985	384
+24	296	0.885794561985	0
+24	307	0.985794561985	384
+24	309	0.985794561985	0
+24	372	1.00000581	656
+24	397	1.00001253	1312
+25	0	0	0
+25	0	0	0
+25	10	0.085794561985	1
+25	14	0.085840561985	0
+25	27	0.185794561985	1
+25	31	0.185840561985	0
+25	51	0.281297768303	1
+25	68	0.281389282683	0
+25	72	0.285794561985	1
+25	76	0.285840561985	0
+25	88	0.385794561985	1
+25	92	0.385840561985	0
+25	102	0.485794561985	1
+25	106	0.485840561985	0
+25	139	0.581085768303	1
+25	157	0.581173282683	0
+25	179	0.582319282683	1
+25	201	0.582406797063	0
+25	223	0.583352797063	1
+25	241	0.583440311443	0
+25	245	0.585794561985	1
+25	249	0.585840561985	0
+25	270	0.685794561985	1
+25	274	0.685840561985	0
+25	283	0.785794561985	1
+25	287	0.785840561985	0
+25	296	0.885794561985	1
+25	300	0.885840561985	0
+25	309	0.985794561985	1
+25	313	0.985840561985	0
+26	0	0	0
+26	0	0	0
+26	8	0.085794561985	1
+26	9	0.085794561985	0
+26	25	0.185794561985	1
+26	26	0.185794561985	0
+26	49	0.280867768303	1
+26	50	0.281297768303	0
+26	70	0.285794561985	1
+26	71	0.285794561985	0
+26	86	0.385794561985	1
+26	87	0.385794561985	0
+26	100	0.485794561985	1
+26	101	0.485794561985	0
+26	128	0.580871768303	1
+26	130	0.580881768303	0
+26	135	0.580915768303	1
+26	138	0.581085768303	0
+26	168	0.581745282683	1
+26	170	0.581755282683	0
+26	175	0.581789282683	1
+26	178	0.582319282683	0
+26	212	0.582738797063	1
+26	214	0.582748797063	0
+26	219	0.582782797063	1
+26	222	0.583352797063	0
+26	243	0.585794561985	1
+26	244	0.585794561985	0
+26	268	0.685794561985	1
+26	269	0.685794561985	0
+26	281	0.785794561985	1
+26	282	0.785794561985	0
+26	294	0.885794561985	1
+26	295	0.885794561985	0
+26	307	0.985794561985	1
+26	308	0.985794561985	0
+27	0	0	0
+27	0	0	0
+27	0	0	0
+27	0	0	0
+27	0	0	0
+27	370	1.00000581	0
+27	396	1.00001253	0
+28	0	0	0
+28	0	0	0
+28	0	0	0
+28	0	0	0
+28	0	0	0
+28	370	1.00000581	0
+28	396	1.00001253	0
+29	0	0	0
+29	0	0	0
+29	0	0	0
+29	0	0	0
+29	0	0	0
+30	0	0	0
+30	0	0	0
+30	0	0	0
+30	0	0	0
+30	0	0	0
+31	0	0	0
+31	0	0	0
+31	0	0	2
+31	41	0.280829011113	3
+31	45	0.280867011113	2
+31	61	0.281354525493	3
+31	66	0.281388525493	2
+31	120	0.580829011113	3
+31	124	0.580871011113	2
+31	150	0.581138525493	3
+31	155	0.581172525493	2
+31	160	0.581702525493	3
+31	164	0.581744525493	2
+31	194	0.582372039873	3
+31	199	0.582406039873	2
+31	204	0.582696039873	3
+31	208	0.582738039873	2
+31	234	0.583405554253	3
+31	239	0.583439554253	2
+31	355	1	3
+32	0	0	0
+32	23	0.180829011113	0
+32	117	0.580829011113	0
+32	192	0.582362039873	0
+33	0	0	0
+33	0	0	0
+33	0	0	2
+33	11	0.085794561985	3
+33	15	0.085840561985	2
+33	28	0.185794561985	3
+33	32	0.185840561985	2
+33	52	0.281297768303	3
+33	56	0.281343768303	2
+33	73	0.285794561985	3
+33	77	0.285840561985	2
+33	89	0.385794561985	3
+33	93	0.385840561985	2
+33	103	0.485794561985	3
+33	107	0.485840561985	2
+33	130	0.580881768303	3
+33	135	0.580915768303	2
+33	140	0.581085768303	3
+33	144	0.581127768303	2
+33	170	0.581755282683	3
+33	175	0.581789282683	2
+33	180	0.582319282683	3
+33	184	0.582361282683	2
+33	214	0.582748797063	3
+33	219	0.582782797063	2
+33	224	0.583352797063	3
+33	228	0.583394797063	2
+33	246	0.585794561985	3
+33	250	0.585840561985	2
+33	271	0.685794561985	3
+33	275	0.685840561985	2
+33	284	0.785794561985	3
+33	288	0.785840561985	2
+33	297	0.885794561985	3
+33	301	0.885840561985	2
+33	310	0.985794561985	3
+33	314	0.985840561985	2
+34	0	0	0
+35	0	0	1
+35	13	0.085795319175	3
+35	16	0.085841319175	1
+35	30	0.185795319175	3
+35	33	0.185841319175	1
+35	41	0.280829011113	0
+35	45	0.280867011113	1
+35	54	0.281298525493	3
+35	57	0.281344525493	1
+35	61	0.281354525493	0
+35	66	0.281388525493	1
+35	75	0.285795319175	3
+35	78	0.285841319175	1
+35	91	0.385795319175	3
+35	94	0.385841319175	1
+35	105	0.485795319175	3
+35	108	0.485841319175	1
+35	120	0.580829011113	0
+35	124	0.580871011113	1
+35	132	0.580882525493	3
+35	136	0.580916525493	1
+35	142	0.581086525493	3
+35	145	0.581128525493	1
+35	150	0.581138525493	0
+35	155	0.581172525493	1
+35	160	0.581702525493	0
+35	164	0.581744525493	1
+35	172	0.581756039873	3
+35	176	0.581790039873	1
+35	182	0.582320039873	3
+35	185	0.582362039873	1
+35	194	0.582372039873	0
+35	199	0.582406039873	1
+35	204	0.582696039873	0
+35	208	0.582738039873	1
+35	216	0.582749554253	3
+35	220	0.582783554253	1
+35	226	0.583353554253	3
+35	229	0.583395554253	1
+35	234	0.583405554253	0
+35	239	0.583439554253	1
+35	248	0.585795319175	3
+35	251	0.585841319175	1
+35	273	0.685795319175	3
+35	276	0.685841319175	1
+35	286	0.785795319175	3
+35	289	0.785841319175	1
+35	299	0.885795319175	3
+35	302	0.885841319175	1
+35	312	0.985795319175	3
+35	315	0.985841319175	1
+35	355	1	0
+36	0	0	0
+36	0	0	0
+36	13	0.085795319175	0
+36	13	0.085795319175	0
+36	16	0.085841319175	0
+36	16	0.085841319175	0
+36	30	0.185795319175	0
+36	30	0.185795319175	0
+36	33	0.185841319175	0
+36	33	0.185841319175	0
+36	38	0.280829011113	0
+36	38	0.280829011113	2
+36	39	0.280829011113	2
+36	39	0.280829011113	0
+36	41	0.280829011113	0
+36	41	0.280829011113	0
+36	45	0.280867011113	0
+36	45	0.280867011113	0
+36	54	0.281298525493	0
+36	54	0.281298525493	0
+36	57	0.281344525493	0
+36	57	0.281344525493	0
+36	61	0.281354525493	0
+36	61	0.281354525493	0
+36	66	0.281388525493	0
+36	66	0.281388525493	0
+36	75	0.285795319175	0
+36	75	0.285795319175	0
+36	78	0.285841319175	0
+36	78	0.285841319175	0
+36	91	0.385795319175	0
+36	91	0.385795319175	0
+36	94	0.385841319175	0
+36	94	0.385841319175	0
+36	105	0.485795319175	0
+36	105	0.485795319175	0
+36	108	0.485841319175	0
+36	108	0.485841319175	0
+36	116	0.580829011113	0
+36	116	0.580829011113	2
+36	118	0.580829011113	2
+36	118	0.580829011113	0
+36	120	0.580829011113	0
+36	120	0.580829011113	0
+36	136	0.580916525493	0
+36	136	0.580916525493	0
+36	142	0.581086525493	0
+36	142	0.581086525493	0
+36	145	0.581128525493	0
+36	145	0.581128525493	0
+36	148	0.581128525493	0
+36	148	0.581128525493	2
+36	150	0.581138525493	2
+36	150	0.581138525493	1
+36	155	0.581172525493	1
+36	155	0.581172525493	2
+36	158	0.581702525493	2
+36	158	0.581702525493	0
+36	160	0.581702525493	0
+36	160	0.581702525493	0
+36	176	0.581790039873	0
+36	176	0.581790039873	0
+36	182	0.582320039873	0
+36	182	0.582320039873	0
+36	185	0.582362039873	0
+36	185	0.582362039873	0
+36	191	0.582362039873	0
+36	191	0.582362039873	2
+36	194	0.582372039873	2
+36	194	0.582372039873	1
+36	199	0.582406039873	1
+36	199	0.582406039873	2
+36	202	0.582696039873	2
+36	202	0.582696039873	0
+36	204	0.582696039873	0
+36	204	0.582696039873	0
+36	220	0.582783554253	0
+36	220	0.582783554253	0
+36	226	0.583353554253	0
+36	226	0.583353554253	0
+36	229	0.583395554253	0
+36	229	0.583395554253	0
+36	234	0.583405554253	0
+36	234	0.583405554253	0
+36	239	0.583439554253	0
+36	239	0.583439554253	0
+36	248	0.585795319175	0
+36	248	0.585795319175	0
+36	251	0.585841319175	0
+36	251	0.585841319175	0
+36	273	0.685795319175	0
+36	273	0.685795319175	0
+36	276	0.685841319175	0
+36	276	0.685841319175	0
+36	286	0.785795319175	0
+36	286	0.785795319175	0
+36	289	0.785841319175	0
+36	289	0.785841319175	0
+36	299	0.885795319175	0
+36	299	0.885795319175	0
+36	302	0.885841319175	0
+36	302	0.885841319175	0
+36	312	0.985795319175	0
+36	312	0.985795319175	0
+36	315	0.985841319175	0
+36	315	0.985841319175	0
+36	348	1	0
+36	348	1	2
+36	353	1	2
+36	353	1	0
+36	355	1	0
+36	355	1	0
+37	0	0	1
+37	11	0.085794561985	0
+37	15	0.085840561985	1
+37	28	0.185794561985	0
+37	32	0.185840561985	1
+37	43	0.280829768303	3
+37	46	0.280867768303	1
+37	52	0.281297768303	0
+37	56	0.281343768303	1
+37	63	0.281355282683	3
+37	67	0.281389282683	1
+37	73	0.285794561985	0
+37	77	0.285840561985	1
+37	89	0.385794561985	0
+37	93	0.385840561985	1
+37	103	0.485794561985	0
+37	107	0.485840561985	1
+37	122	0.580829768303	3
+37	125	0.580871768303	1
+37	130	0.580881768303	0
+37	135	0.580915768303	1
+37	140	0.581085768303	0
+37	144	0.581127768303	1
+37	152	0.581139282683	3
+37	156	0.581173282683	1
+37	162	0.581703282683	3
+37	165	0.581745282683	1
+37	170	0.581755282683	0
+37	175	0.581789282683	1
+37	180	0.582319282683	0
+37	184	0.582361282683	1
+37	196	0.582372797063	3
+37	200	0.582406797063	1
+37	206	0.582696797063	3
+37	209	0.582738797063	1
+37	214	0.582748797063	0
+37	219	0.582782797063	1
+37	224	0.583352797063	0
+37	228	0.583394797063	1
+37	236	0.583406311443	3
+37	240	0.583440311443	1
+37	246	0.585794561985	0
+37	250	0.585840561985	1
+37	271	0.685794561985	0
+37	275	0.685840561985	1
+37	284	0.785794561985	0
+37	288	0.785840561985	1
+37	297	0.885794561985	0
+37	301	0.885840561985	1
+37	310	0.985794561985	0
+37	314	0.985840561985	1
+37	357	1.00000075719	3
+38	0	0	0
+38	0	0	0
+38	8	0.085794561985	0
+38	8	0.085794561985	2
+38	9	0.085794561985	2
+38	9	0.085794561985	0
+38	11	0.085794561985	0
+38	11	0.085794561985	0
+38	15	0.085840561985	0
+38	15	0.085840561985	0
+38	25	0.185794561985	0
+38	25	0.185794561985	2
+38	26	0.185794561985	2
+38	26	0.185794561985	0
+38	28	0.185794561985	0
+38	28	0.185794561985	0
+38	32	0.185840561985	0
+38	32	0.185840561985	0
+38	43	0.280829768303	0
+38	43	0.280829768303	0
+38	46	0.280867768303	0
+38	46	0.280867768303	0
+38	49	0.280867768303	0
+38	49	0.280867768303	2
+38	50	0.281297768303	2
+38	50	0.281297768303	0
+38	52	0.281297768303	0
+38	52	0.281297768303	0
+38	67	0.281389282683	0
+38	67	0.281389282683	0
+38	70	0.285794561985	0
+38	70	0.285794561985	2
+38	71	0.285794561985	2
+38	71	0.285794561985	0
+38	73	0.285794561985	0
+38	73	0.285794561985	0
+38	77	0.285840561985	0
+38	77	0.285840561985	0
+38	86	0.385794561985	0
+38	86	0.385794561985	2
+38	87	0.385794561985	2
+38	87	0.385794561985	0
+38	89	0.385794561985	0
+38	89	0.385794561985	0
+38	93	0.385840561985	0
+38	93	0.385840561985	0
+38	100	0.485794561985	0
+38	100	0.485794561985	2
+38	101	0.485794561985	2
+38	101	0.485794561985	0
+38	103	0.485794561985	0
+38	103	0.485794561985	0
+38	107	0.485840561985	0
+38	107	0.485840561985	0
+38	122	0.580829768303	0
+38	122	0.580829768303	0
+38	125	0.580871768303	0
+38	125	0.580871768303	0
+38	128	0.580871768303	0
+38	128	0.580871768303	2
+38	130	0.580881768303	2
+38	130	0.580881768303	1
+38	135	0.580915768303	1
+38	135	0.580915768303	2
+38	138	0.581085768303	2
+38	138	0.581085768303	0
+38	140	0.581085768303	0
+38	140	0.581085768303	0
+38	156	0.581173282683	0
+38	156	0.581173282683	0
+38	162	0.581703282683	0
+38	162	0.581703282683	0
+38	165	0.581745282683	0
+38	165	0.581745282683	0
+38	168	0.581745282683	0
+38	168	0.581745282683	2
+38	170	0.581755282683	2
+38	170	0.581755282683	1
+38	175	0.581789282683	1
+38	175	0.581789282683	2
+38	178	0.582319282683	2
+38	178	0.582319282683	0
+38	180	0.582319282683	0
+38	180	0.582319282683	0
+38	200	0.582406797063	0
+38	200	0.582406797063	0
+38	206	0.582696797063	0
+38	206	0.582696797063	0
+38	209	0.582738797063	0
+38	209	0.582738797063	0
+38	212	0.582738797063	0
+38	212	0.582738797063	2
+38	214	0.582748797063	2
+38	214	0.582748797063	1
+38	219	0.582782797063	1
+38	219	0.582782797063	2
+38	222	0.583352797063	2
+38	222	0.583352797063	0
+38	224	0.583352797063	0
+38	224	0.583352797063	0
+38	240	0.583440311443	0
+38	240	0.583440311443	0
+38	243	0.585794561985	0
+38	243	0.585794561985	2
+38	244	0.585794561985	2
+38	244	0.585794561985	0
+38	246	0.585794561985	0
+38	246	0.585794561985	0
+38	250	0.585840561985	0
+38	250	0.585840561985	0
+38	268	0.685794561985	0
+38	268	0.685794561985	2
+38	269	0.685794561985	2
+38	269	0.685794561985	0
+38	271	0.685794561985	0
+38	271	0.685794561985	0
+38	275	0.685840561985	0
+38	275	0.685840561985	0
+38	281	0.785794561985	0
+38	281	0.785794561985	2
+38	282	0.785794561985	2
+38	282	0.785794561985	0
+38	284	0.785794561985	0
+38	284	0.785794561985	0
+38	288	0.785840561985	0
+38	288	0.785840561985	0
+38	294	0.885794561985	0
+38	294	0.885794561985	2
+38	295	0.885794561985	2
+38	295	0.885794561985	0
+38	297	0.885794561985	0
+38	297	0.885794561985	0
+38	301	0.885840561985	0
+38	301	0.885840561985	0
+38	307	0.985794561985	0
+38	307	0.985794561985	2
+38	308	0.985794561985	2
+38	308	0.985794561985	0
+38	310	0.985794561985	0
+38	310	0.985794561985	0
+38	314	0.985840561985	0
+38	314	0.985840561985	0
+38	357	1.00000075719	0
+38	357	1.00000075719	0
+38	372	1.00000581	0
+38	372	1.00000581	1
+39	0	0	31
+40	0	0	31
+41	8	0.085794561985	384
+41	25	0.185794561985	384
+41	49	0.280867768303	384
+41	70	0.285794561985	384
+41	86	0.385794561985	384
+41	100	0.485794561985	384
+41	128	0.580871768303	272
+41	168	0.581745282683	272
+41	212	0.582738797063	288
+41	243	0.585794561985	384
+41	268	0.685794561985	384
+41	281	0.785794561985	384
+41	294	0.885794561985	384
+41	307	0.985794561985	384
+41	372	1.00000581	656
+41	397	1.00001253	656
+42	8	0.085794561985	3
+42	25	0.185794561985	7
+42	49	0.280867768303	19
+42	70	0.285794561985	21
+42	86	0.385794561985	18
+42	100	0.485794561985	4
+42	128	0.580871768303	6
+42	168	0.581745282683	24
+42	212	0.582738797063	26
+42	243	0.585794561985	1
+42	268	0.685794561985	6
+42	281	0.785794561985	7
+42	294	0.885794561985	23
+42	307	0.985794561985	14
+42	372	1.00000581	20
+43	10	0.085794561985	0
+43	27	0.185794561985	0
+43	51	0.281297768303	0.00043
+43	72	0.285794561985	0
+43	88	0.385794561985	0
+43	102	0.485794561985	0
+43	139	0.581085768303	0.000214
+43	179	0.582319282683	0.000574
+43	223	0.583352797063	0.000614
+43	245	0.585794561985	0
+43	270	0.685794561985	0
+43	283	0.785794561985	0
+43	296	0.885794561985	0
+43	309	0.985794561985	0
+44	10	0.085794561985	384
+44	27	0.185794561985	384
+44	51	0.281297768303	384
+44	72	0.285794561985	384
+44	88	0.385794561985	384
+44	102	0.485794561985	384
+44	139	0.581085768303	272
+44	179	0.582319282683	272
+44	223	0.583352797063	288
+44	245	0.585794561985	384
+44	270	0.685794561985	384
+44	283	0.785794561985	384
+44	296	0.885794561985	384
+44	309	0.985794561985	384
+45	10	0.085794561985	24000000
+45	27	0.185794561985	24000000
+45	51	0.281297768303	24000000
+45	72	0.285794561985	24000000
+45	88	0.385794561985	24000000
+45	102	0.485794561985	24000000
+45	126	0.580871768303	24000000
+45	139	0.581085768303	24000000
+45	166	0.581745282683	24000000
+45	179	0.582319282683	24000000
+45	210	0.582738797063	24000000
+45	223	0.583352797063	24000000
+45	245	0.585794561985	24000000
+45	270	0.685794561985	24000000
+45	283	0.785794561985	24000000
+45	296	0.885794561985	24000000
+45	309	0.985794561985	24000000
+46	10	0.085794561985	48
+46	27	0.185794561985	48
+46	51	0.281297768303	48
+46	72	0.285794561985	48
+46	88	0.385794561985	48
+46	102	0.485794561985	48
+46	129	0.580881768303	14
+46	139	0.581085768303	34
+46	169	0.581755282683	14
+46	179	0.582319282683	34
+46	213	0.582748797063	14
+46	223	0.583352797063	36
+46	245	0.585794561985	48
+46	270	0.685794561985	48
+46	283	0.785794561985	48
+46	296	0.885794561985	48
+46	309	0.985794561985	48
+47	11	0.085794561985	1
+47	12	0.085794561985	2
+47	14	0.085840561985	1
+47	15	0.085840561985	0
+47	28	0.185794561985	1
+47	29	0.185794561985	2
+47	31	0.185840561985	1
+47	32	0.185840561985	0
+47	52	0.281297768303	1
+47	53	0.281297768303	2
+47	55	0.281343768303	1
+47	56	0.281343768303	0
+47	73	0.285794561985	1
+47	74	0.285794561985	2
+47	76	0.285840561985	1
+47	77	0.285840561985	0
+47	89	0.385794561985	1
+47	90	0.385794561985	2
+47	92	0.385840561985	1
+47	93	0.385840561985	0
+47	103	0.485794561985	1
+47	104	0.485794561985	2
+47	106	0.485840561985	1
+47	107	0.485840561985	0
+47	130	0.580881768303	1
+47	131	0.580881768303	2
+47	134	0.580915768303	1
+47	135	0.580915768303	0
+47	140	0.581085768303	1
+47	141	0.581085768303	2
+47	143	0.581127768303	1
+47	144	0.581127768303	0
+47	170	0.581755282683	1
+47	171	0.581755282683	2
+47	174	0.581789282683	1
+47	175	0.581789282683	0
+47	180	0.582319282683	1
+47	181	0.582319282683	2
+47	183	0.582361282683	1
+47	184	0.582361282683	0
+47	214	0.582748797063	1
+47	215	0.582748797063	2
+47	218	0.582782797063	1
+47	219	0.582782797063	0
+47	224	0.583352797063	1
+47	225	0.583352797063	2
+47	227	0.583394797063	1
+47	228	0.583394797063	0
+47	246	0.585794561985	1
+47	247	0.585794561985	2
+47	249	0.585840561985	1
+47	250	0.585840561985	0
+47	271	0.685794561985	1
+47	272	0.685794561985	2
+47	274	0.685840561985	1
+47	275	0.685840561985	0
+47	284	0.785794561985	1
+47	285	0.785794561985	2
+47	287	0.785840561985	1
+47	288	0.785840561985	0
+47	297	0.885794561985	1
+47	298	0.885794561985	2
+47	300	0.885840561985	1
+47	301	0.885840561985	0
+47	310	0.985794561985	1
+47	311	0.985794561985	2
+47	313	0.985840561985	1
+47	314	0.985840561985	0
+48	14	0.085840561985	48
+48	31	0.185840561985	48
+48	55	0.281343768303	48
+48	76	0.285840561985	48
+48	92	0.385840561985	48
+48	106	0.485840561985	48
+48	134	0.580915768303	14
+48	143	0.581127768303	34
+48	174	0.581789282683	14
+48	183	0.582361282683	34
+48	218	0.582782797063	14
+48	227	0.583394797063	36
+48	249	0.585840561985	48
+48	274	0.685840561985	48
+48	287	0.785840561985	48
+48	300	0.885840561985	48
+48	313	0.985840561985	48
+49	14	0.085840561985	48
+49	31	0.185840561985	48
+49	76	0.285840561985	48
+49	92	0.385840561985	48
+49	106	0.485840561985	48
+49	249	0.585840561985	48
+49	274	0.685840561985	48
+49	287	0.785840561985	48
+49	300	0.885840561985	48
+49	313	0.985840561985	48
+50	14	0.085840561985	48
+50	31	0.185840561985	48
+50	76	0.285840561985	48
+50	92	0.385840561985	48
+50	106	0.485840561985	48
+50	249	0.585840561985	48
+50	274	0.685840561985	48
+50	287	0.785840561985	48
+50	300	0.885840561985	48
+50	313	0.985840561985	48
+51	14	0.085840561985	48
+51	31	0.185840561985	48
+51	55	0.281343768303	48
+51	76	0.285840561985	48
+51	92	0.385840561985	48
+51	106	0.485840561985	48
+51	134	0.580915768303	14
+51	143	0.581127768303	34
+51	174	0.581789282683	14
+51	183	0.582361282683	34
+51	218	0.582782797063	14
+51	227	0.583394797063	36
+51	249	0.585840561985	48
+51	274	0.685840561985	48
+51	287	0.785840561985	48
+51	300	0.885840561985	48
+51	313	0.985840561985	48
+52	14	0.085840561985	4.6e-05
+52	31	0.185840561985	4.6e-05
+52	68	0.281389282683	9.151438e-05
+52	76	0.285840561985	4.6e-05
+52	92	0.385840561985	4.6e-05
+52	106	0.485840561985	4.6e-05
+52	157	0.581173282683	8.751438e-05
+52	201	0.582406797063	8.751438e-05
+52	241	0.583440311443	8.751438e-05
+52	249	0.585840561985	4.6e-05
+52	274	0.685840561985	4.6e-05
+52	287	0.785840561985	4.6e-05
+52	300	0.885840561985	4.6e-05
+52	313	0.985840561985	4.6e-05
+53	17	0.085841319175	48
+53	34	0.185841319175	48
+53	58	0.281344525493	48
+53	79	0.285841319175	48
+53	95	0.385841319175	48
+53	109	0.485841319175	48
+53	137	0.580916525493	14
+53	146	0.581128525493	34
+53	177	0.581790039873	14
+53	186	0.582362039873	34
+53	221	0.582783554253	14
+53	230	0.583395554253	36
+53	252	0.585841319175	48
+53	277	0.685841319175	48
+53	290	0.785841319175	48
+53	303	0.885841319175	48
+53	316	0.985841319175	48
+54	17	0.085841319175	48
+54	34	0.185841319175	48
+54	58	0.281344525493	48
+54	79	0.285841319175	48
+54	95	0.385841319175	48
+54	109	0.485841319175	48
+54	137	0.580916525493	14
+54	146	0.581128525493	34
+54	177	0.581790039873	14
+54	186	0.582362039873	34
+54	221	0.582783554253	14
+54	230	0.583395554253	36
+54	252	0.585841319175	48
+54	277	0.685841319175	48
+54	290	0.785841319175	48
+54	303	0.885841319175	48
+54	316	0.985841319175	48
+55	17	0.085841319175	48
+55	34	0.185841319175	48
+55	79	0.285841319175	48
+55	95	0.385841319175	48
+55	109	0.485841319175	48
+55	252	0.585841319175	48
+55	277	0.685841319175	48
+55	290	0.785841319175	48
+55	303	0.885841319175	48
+55	316	0.985841319175	48
+56	17	0.085841319175	48
+56	34	0.185841319175	48
+56	79	0.285841319175	48
+56	95	0.385841319175	48
+56	109	0.485841319175	48
+56	252	0.585841319175	48
+56	277	0.685841319175	48
+56	290	0.785841319175	48
+56	303	0.885841319175	48
+56	316	0.985841319175	48
+57	17	0.085841319175	48
+57	34	0.185841319175	48
+57	58	0.281344525493	48
+57	79	0.285841319175	48
+57	95	0.385841319175	48
+57	109	0.485841319175	48
+57	137	0.580916525493	14
+57	146	0.581128525493	34
+57	177	0.581790039873	14
+57	186	0.582362039873	34
+57	221	0.582783554253	14
+57	230	0.583395554253	36
+57	252	0.585841319175	48
+57	277	0.685841319175	48
+57	290	0.785841319175	48
+57	303	0.885841319175	48
+57	316	0.985841319175	48
+58	20	0.180829011113	1
+58	113	0.580829011113	2
+58	188	0.582362039873	4
+59	25	0.1	3840
+59	49	0.2	3840
+59	86	0.3	7680
+59	100	0.4	3840
+59	128	0.5	3840
+59	268	0.6	12160
+59	281	0.7	3840
+59	294	0.8	3840
+59	307	0.9	3840
+59	372	1	3840
+60	27	0.1	3840
+60	51	0.2	3840
+60	88	0.3	7680
+60	102	0.4	3840
+60	139	0.5	3840
+60	270	0.6	12160
+60	283	0.7	3840
+60	296	0.8	3840
+60	309	0.9	3840
+61	38	0.280829011113	256
+61	116	0.580829011113	272
+61	148	0.581128525493	272
+61	191	0.582362039873	288
+61	348	1	512
+61	349	1	512
+62	38	0.1	0
+62	38	0.2	0
+62	116	0.3	2560
+62	116	0.4	0
+62	116	0.5	0
+62	348	0.6	8320
+62	348	0.7	0
+62	348	0.8	0
+62	348	0.9	0
+62	348	1	0
+63	38	0.280829011113	9
+63	116	0.580829011113	23
+63	148	0.581128525493	24
+63	191	0.582362039873	12
+63	348	1	9
+64	40	0.280829011113	0
+64	119	0.580829011113	0
+64	159	0.581702525493	0.000574
+64	203	0.582696039873	0.000334
+64	354	1	0
+64	354	1	0
+65	40	0.280829011113	256
+65	119	0.580829011113	272
+65	159	0.581702525493	272
+65	203	0.582696039873	288
+65	354	1	512
+65	354	1	512
+66	40	0.1	0
+66	40	0.2	0
+66	119	0.3	2560
+66	119	0.4	0
+66	119	0.5	0
+66	354	0.6	8320
+66	354	0.7	0
+66	354	0.8	0
+66	354	0.9	0
+66	354	1	0
+67	40	0.280829011113	24000000
+67	58	0.281344525493	24000000
+67	119	0.580829011113	24000000
+67	146	0.581128525493	24000000
+67	159	0.581702525493	24000000
+67	186	0.582362039873	24000000
+67	203	0.582696039873	24000000
+67	230	0.583395554253	24000000
+67	354	1	24000000
+68	40	0.280829011113	32
+68	60	0.281354525493	14
+68	119	0.580829011113	34
+68	149	0.581138525493	14
+68	159	0.581702525493	34
+68	193	0.582372039873	14
+68	203	0.582696039873	36
+68	233	0.583405554253	14
+68	354	1	64
+69	41	0.280829011113	1
+69	42	0.280829011113	2
+69	44	0.280867011113	1
+69	45	0.280867011113	0
+69	61	0.281354525493	1
+69	62	0.281354525493	2
+69	65	0.281388525493	1
+69	66	0.281388525493	0
+69	120	0.580829011113	1
+69	121	0.580829011113	2
+69	123	0.580871011113	1
+69	124	0.580871011113	0
+69	150	0.581138525493	1
+69	151	0.581138525493	2
+69	154	0.581172525493	1
+69	155	0.581172525493	0
+69	160	0.581702525493	1
+69	161	0.581702525493	2
+69	163	0.581744525493	1
+69	164	0.581744525493	0
+69	194	0.582372039873	1
+69	195	0.582372039873	2
+69	198	0.582406039873	1
+69	199	0.582406039873	0
+69	204	0.582696039873	1
+69	205	0.582696039873	2
+69	207	0.582738039873	1
+69	208	0.582738039873	0
+69	234	0.583405554253	1
+69	235	0.583405554253	2
+69	238	0.583439554253	1
+69	239	0.583439554253	0
+69	355	1	1
+69	356	1	2
+70	44	0.280867011113	32
+70	65	0.281388525493	14
+70	123	0.580871011113	34
+70	154	0.581172525493	14
+70	163	0.581744525493	34
+70	198	0.582406039873	14
+70	207	0.582738039873	36
+70	238	0.583439554253	14
+71	44	0.280867011113	32
+72	44	0.280867011113	32
+73	44	0.280867011113	32
+73	65	0.281388525493	14
+73	123	0.580871011113	34
+73	154	0.581172525493	14
+73	163	0.581744525493	34
+73	198	0.582406039873	14
+73	207	0.582738039873	36
+73	238	0.583439554253	14
+74	44	0.280867011113	3.8e-05
+74	137	0.580916525493	8.751438e-05
+74	177	0.581790039873	8.751438e-05
+74	221	0.582783554253	8.751438e-05
+75	47	0.280867768303	32
+75	68	0.281389282683	14
+75	126	0.580871768303	34
+75	157	0.581173282683	14
+75	166	0.581745282683	34
+75	201	0.582406797063	14
+75	210	0.582738797063	36
+75	241	0.583440311443	14
+76	47	0.280867768303	32
+76	68	0.281389282683	14
+76	126	0.580871768303	34
+76	157	0.581173282683	14
+76	166	0.581745282683	34
+76	201	0.582406797063	14
+76	210	0.582738797063	36
+76	241	0.583440311443	14
+77	47	0.280867768303	32
+78	47	0.280867768303	32
+79	47	0.280867768303	32
+79	68	0.281389282683	14
+79	126	0.580871768303	34
+79	157	0.581173282683	14
+79	166	0.581745282683	34
+79	201	0.582406797063	14
+79	210	0.582738797063	36
+79	241	0.583440311443	14
+80	55	0.281343768303	48
+80	134	0.580915768303	14
+80	143	0.581127768303	34
+80	174	0.581789282683	14
+80	183	0.582361282683	34
+80	218	0.582782797063	14
+80	227	0.583394797063	36
+81	55	0.281343768303	0
+81	55	0.281343768303	4.4e-05
+81	64	0.281387768303	0
+81	143	0.581127768303	0
+81	143	0.581127768303	4.4e-05
+81	153	0.581171768303	0
+81	183	0.582361282683	0
+81	183	0.582361282683	4.4e-05
+81	197	0.582405282683	0
+81	227	0.583394797063	0
+81	227	0.583394797063	4.4e-05
+81	237	0.583438797063	0
+82	58	0.281344525493	48
+82	137	0.580916525493	14
+82	146	0.581128525493	34
+82	177	0.581790039873	14
+82	186	0.582362039873	34
+82	221	0.582783554253	14
+82	230	0.583395554253	36
+83	65	0.281388525493	14
+83	123	0.580871011113	34
+83	154	0.581172525493	14
+83	163	0.581744525493	34
+83	198	0.582406039873	14
+83	207	0.582738039873	36
+83	238	0.583439554253	14
+84	68	0.281389282683	14
+84	126	0.580871768303	34
+84	157	0.581173282683	14
+84	166	0.581745282683	34
+84	201	0.582406797063	14
+84	210	0.582738797063	36
+84	241	0.583440311443	14
+85	113	0.580829011113	1
+85	188	0.582362039873	2
+85	232	0.583395554253	4
+86	123	0.580871011113	0
+86	123	0.580871011113	4.4e-05
+86	133	0.580915011113	0
+86	163	0.581744525493	0
+86	163	0.581744525493	4.4e-05
+86	173	0.581788525493	0
+86	207	0.582738039873	0
+86	207	0.582738039873	4.4e-05
+86	217	0.582782039873	0
+87	319	1	10
+88	320	1	10
+89	321	1	10
+90	322	1	10
+91	323	1	10
+92	324	1	10
+93	326	1	18
+93	328	1	18
+94	330	1	18
+94	332	1	18
+95	334	1	18
+95	336	1	18
+96	337	1	28
+96	338	1	28
+97	339	1	28
+97	340	1	28
+98	341	1	28
+99	345	1	28
+99	346	1	28
+100	347	1	28
+100	383	1.00001162	38
+100	384	1.00001162	38
+101	348	1	36
+101	349	1	36
+102	350	1	368
+102	351	1	368
+103	350	0.1	0
+103	350	0.2	0
+103	350	0.3	0
+103	350	0.4	0
+103	350	0.5	0
+103	350	0.6	0
+103	350	0.7	0
+103	350	0.8	0
+103	350	0.9	0
+103	350	1	0
+104	350	1	0
+104	373	1.00000672	6.72e-06
+105	350	1	368
+105	373	1.00000672	368
+106	350	0.1	0
+106	350	0.2	0
+106	350	0.3	0
+106	350	0.4	0
+106	350	0.5	0
+106	350	0.6	0
+106	350	0.7	0
+106	350	0.8	0
+106	350	0.9	0
+106	350	1	0
+107	350	1	46
+107	373	1.00000672	46
+108	352	1	368
+108	385	1.00001162	448
+108	386	1.00001162	448
+109	352	0.1	0
+109	352	0.2	0
+109	352	0.3	0
+109	352	0.4	0
+109	352	0.5	0
+109	352	0.6	0
+109	352	0.7	0
+109	352	0.8	0
+109	352	0.9	0
+109	352	1	0
+110	352	1	0
+110	385	1.00001162	0
+111	352	1	368
+111	385	1.00001162	448
+112	352	0.1	0
+112	352	0.2	0
+112	352	0.3	0
+112	352	0.4	0
+112	352	0.5	0
+112	352	0.6	0
+112	352	0.7	0
+112	352	0.8	0
+112	352	0.9	0
+112	352	1	0
+113	352	1	46
+113	385	1.00001162	56
+114	358	1.00000576	64
+114	387	1.00001248	64
+115	359	1.00000576	64
+116	360	1.00000581	64
+116	388	1.00001253	64
+117	360	1.00000581	64
+117	388	1.00001253	64
+118	361	1.00000581	64
+119	361	1.00000581	64
+120	362	1.00000581	46
+120	391	1.00001253	46
+121	363	1.00000581	46
+121	379	1.00001162	46
+122	365	1.00000581	28
+123	366	1.00000581	46
+123	367	1.00000581	46
+123	393	1.00001253	46
+123	394	1.00001253	46
+124	368	1.00000581	28
+125	370	1.00000581	512
+125	396	1.00001253	512
+126	370	0.1	0
+126	370	0.2	0
+126	370	0.3	0
+126	370	0.4	0
+126	370	0.5	0
+126	370	0.6	0
+126	370	0.7	0
+126	370	0.8	0
+126	370	0.9	0
+126	370	1	0
+127	370	1.00000581	0
+127	396	1.00001253	0
+128	370	1.00000581	512
+128	396	1.00001253	512
+129	370	0.1	0
+129	370	0.2	0
+129	370	0.3	0
+129	370	0.4	0
+129	370	0.5	0
+129	370	0.6	0
+129	370	0.7	0
+129	370	0.8	0
+129	370	0.9	0
+129	370	1	0
+130	370	1.00000581	64
+130	396	1.00001253	64
+131	371	1.00000581	368
+132	371	0.1	0
+132	371	0.2	0
+132	371	0.3	0
+132	371	0.4	0
+132	371	0.5	0
+132	371	0.6	0
+132	371	0.7	0
+132	371	0.8	0
+132	371	0.9	0
+132	371	1	0
+133	371	1.00000581	0
+134	371	1.00000581	368
+135	371	0.1	0
+135	371	0.2	0
+135	371	0.3	0
+135	371	0.4	0
+135	371	0.5	0
+135	371	0.6	0
+135	371	0.7	0
+135	371	0.8	0
+135	371	0.9	0
+135	371	1	0
+136	371	1.00000581	46
+137	372	1.00000581	54
+137	397	1.00001253	54
+138	375	1.00001157	64
+139	376	1.00001157	64
+140	377	1.00001162	64
+141	377	1.00001162	64
+142	378	1.00001162	64
+143	378	1.00001162	64
+144	380	1.00001162	46
+vector 145 Network.wirelessHost1.app[1] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 146 Network.wirelessHost1.app[2] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 147 Network.wiredHost1.app[1] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 148 Network.wiredHost1.app[2] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 149 Network.wiredHost2.app[1] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 150 Network.wiredHost2.app[2] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 151 Network.router.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 152 Network.router.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 153 Network.accessPoint.eth[1].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 154 Network.accessPoint.eth[1].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+59	397	1.000012548063	104557970.42141
+60	397	1	3840
+60	397	1.000012548063	0
+62	397	1.000012548063	81606220.816711
+66	397	1.000012548063	81606220.816711
+103	397	1.000012548063	58654471.212011
+106	397	1.000012548063	58654471.212011
+109	397	1.000012548063	100732678.82063
+112	397	1.000012548063	65029957.213317
+126	397	1.000012548063	81606220.816711
+129	397	1.000012548063	81606220.816711
+132	397	1.000012548063	29327235.606005
+135	397	1.000012548063	29327235.606005
+145	397	0.1	0
+145	397	0.2	0
+145	397	0.3	0
+145	397	0.4	0
+145	397	0.5	0
+145	397	0.6	0
+145	397	0.7	0
+145	397	0.8	0
+145	397	0.9	0
+145	397	1	0
+145	397	1.000012548063	0
+146	397	0.1	0
+146	397	0.2	0
+146	397	0.3	0
+146	397	0.4	0
+146	397	0.5	0
+146	397	0.6	0
+146	397	0.7	0
+146	397	0.8	0
+146	397	0.9	0
+146	397	1	0
+146	397	1.000012548063	0
+147	397	0.1	0
+147	397	0.2	0
+147	397	0.3	0
+147	397	0.4	0
+147	397	0.5	0
+147	397	0.6	0
+147	397	0.7	0
+147	397	0.8	0
+147	397	0.9	0
+147	397	1	0
+147	397	1.000012548063	0
+148	397	0.1	0
+148	397	0.2	0
+148	397	0.3	0
+148	397	0.4	0
+148	397	0.5	0
+148	397	0.6	0
+148	397	0.7	0
+148	397	0.8	0
+148	397	0.9	0
+148	397	1	0
+148	397	1.000012548063	0
+149	397	0.1	0
+149	397	0.2	0
+149	397	0.3	0
+149	397	0.4	0
+149	397	0.5	0
+149	397	0.6	0
+149	397	0.7	0
+149	397	0.8	0
+149	397	0.9	0
+149	397	1	0
+149	397	1.000012548063	0
+150	397	0.1	0
+150	397	0.2	0
+150	397	0.3	0
+150	397	0.4	0
+150	397	0.5	0
+150	397	0.6	0
+150	397	0.7	0
+150	397	0.8	0
+150	397	0.9	0
+150	397	1	0
+150	397	1.000012548063	0
+151	397	0.1	0
+151	397	0.2	0
+151	397	0.3	0
+151	397	0.4	0
+151	397	0.5	0
+151	397	0.6	0
+151	397	0.7	0
+151	397	0.8	0
+151	397	0.9	0
+151	397	1	0
+151	397	1.000012548063	0
+152	397	0.1	0
+152	397	0.2	0
+152	397	0.3	0
+152	397	0.4	0
+152	397	0.5	0
+152	397	0.6	0
+152	397	0.7	0
+152	397	0.8	0
+152	397	0.9	0
+152	397	1	0
+152	397	1.000012548063	0
+153	397	0.1	0
+153	397	0.2	0
+153	397	0.3	0
+153	397	0.4	0
+153	397	0.5	0
+153	397	0.6	0
+153	397	0.7	0
+153	397	0.8	0
+153	397	0.9	0
+153	397	1	0
+153	397	1.000012548063	0
+154	397	0.1	0
+154	397	0.2	0
+154	397	0.3	0
+154	397	0.4	0
+154	397	0.5	0
+154	397	0.6	0
+154	397	0.7	0
+154	397	0.8	0
+154	397	0.9	0
+154	397	1	0
+154	397	1.000012548063	0
+

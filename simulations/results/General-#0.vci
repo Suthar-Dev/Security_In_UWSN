@@ -1,0 +1,1032 @@
+file 72869 1727644126                                           
+version 3
+run General-0-20240930-02:37:56-21608
+attr configname General
+attr datetime 20240930-02:37:56
+attr datetimef 20240930-023756
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network
+attr processid 21608
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config network Network
+config sim-time-limit 400s
+config **.addDefaultRoutes false
+config **.*Host*.numApps 3
+config **.*Host*.app[0].typename UdpEchoApp
+config **.*Host*.app[0].localPort 1000
+config **.*Host*.app[*].typename UdpBasicApp
+config **.wiredHost1.app[1].destAddresses "\"wirelessHost1\""
+config **.wiredHost1.app[2].destAddresses "\"wiredHost2\""
+config **.wiredHost2.app[1].destAddresses "\"wirelessHost1\""
+config **.wiredHost2.app[2].destAddresses "\"wiredHost1\""
+config **.wirelessHost1.app[1].destAddresses "\"wiredHost1\""
+config **.wirelessHost1.app[2].destAddresses "\"wiredHost2\""
+config **.*Host*.app[1..].destPort 1000
+config **.*Host*.app[1..].messageLength 10B
+config **.*Host*.app[1..].sendInterval 1s
+config **.*Host*.app[1..].stopTime 300s
+config **.initialZ 0m
+
+vector 0 Network.wirelessHost1.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 1 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 2 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 3 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 4 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 5 Network.wirelessHost1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 6 Network.wirelessHost1.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 7 Network.wirelessHost1.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 8 Network.wiredHost1.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 9 Network.wiredHost1.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 10 Network.wiredHost1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 11 Network.wiredHost1.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 12 Network.wiredHost1.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 13 Network.wiredHost2.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 14 Network.wiredHost2.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 15 Network.wiredHost2.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 16 Network.wiredHost2.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 17 Network.wiredHost2.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 18 Network.router.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 19 Network.router.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 20 Network.router.eth[1].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 21 Network.router.eth[1].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 22 Network.accessPoint.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 23 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 24 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 25 Network.accessPoint.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 26 Network.accessPoint.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 27 Network.accessPoint.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 28 Network.accessPoint.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 29 Network.accessPoint.eth[1].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 30 Network.accessPoint.eth[1].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 31 Network.wirelessHost1.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 32 Network.wirelessHost1.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 33 Network.accessPoint.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 34 Network.accessPoint.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 35 Network.wirelessHost1.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 36 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 37 Network.accessPoint.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 38 Network.accessPoint.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 39 Network.wirelessHost1.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 40 Network.accessPoint.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 41 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 42 Network.accessPoint.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 43 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 44 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 45 Network.accessPoint.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 46 Network.accessPoint.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 47 Network.accessPoint.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 48 Network.accessPoint.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 49 Network.accessPoint.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 50 Network.accessPoint.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 51 Network.accessPoint.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 52 Network.accessPoint.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 53 Network.wirelessHost1.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 54 Network.wirelessHost1.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 55 Network.wirelessHost1.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 56 Network.wirelessHost1.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 57 Network.wirelessHost1.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 58 Network.wirelessHost1.wlan[0].agent sentRequest:vector ETV
+attr recordingmode vector
+attr title "sent requests"
+vector 59 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 60 Network.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 61 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 62 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 63 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 64 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 65 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 66 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 67 Network.wirelessHost1.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 68 Network.wirelessHost1.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 69 Network.wirelessHost1.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 70 Network.wirelessHost1.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 71 Network.wirelessHost1.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 72 Network.wirelessHost1.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 73 Network.wirelessHost1.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 74 Network.wirelessHost1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 75 Network.accessPoint.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 76 Network.accessPoint.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 77 Network.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 78 Network.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 79 Network.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 80 Network.accessPoint.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 81 Network.accessPoint.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 82 Network.wirelessHost1.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 83 Network.wirelessHost1.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 84 Network.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 85 Network.wirelessHost1.wlan[0].agent acceptConfirm:vector ETV
+attr recordingmode vector
+attr title "accepted confirms"
+vector 86 Network.wirelessHost1.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 87 Network.wirelessHost1.app[1] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 88 Network.wirelessHost1.app[2] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 89 Network.wiredHost1.app[1] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 90 Network.wiredHost1.app[2] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 91 Network.wiredHost2.app[1] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 92 Network.wiredHost2.app[2] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 93 Network.wirelessHost1.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 94 Network.wiredHost1.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 95 Network.wiredHost2.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 96 Network.wirelessHost1.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 97 Network.wiredHost1.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 98 Network.wiredHost2.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 99 Network.wiredHost1.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 100 Network.wiredHost2.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 101 Network.wirelessHost1.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 102 Network.wiredHost1.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 103 Network.wiredHost1.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 104 Network.wiredHost1.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 105 Network.wiredHost1.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 106 Network.wiredHost1.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 107 Network.wiredHost1.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 108 Network.wiredHost2.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 109 Network.wiredHost2.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 110 Network.wiredHost2.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 111 Network.wiredHost2.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 112 Network.wiredHost2.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 113 Network.wiredHost2.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 114 Network.wiredHost1.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 115 Network.wiredHost2.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 116 Network.accessPoint.eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 117 Network.accessPoint.eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 118 Network.router.eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 119 Network.router.eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 120 Network.accessPoint.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 121 Network.router.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 122 Network.router.ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, packetBytes"
+vector 123 Network.accessPoint.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 124 Network.router.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 125 Network.accessPoint.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 126 Network.accessPoint.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 127 Network.accessPoint.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 128 Network.accessPoint.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 129 Network.accessPoint.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 130 Network.accessPoint.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 131 Network.router.eth[1].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 132 Network.router.eth[1].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 133 Network.router.eth[1].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 134 Network.router.eth[1].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 135 Network.router.eth[1].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 136 Network.router.eth[1].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 137 Network.accessPoint.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 138 Network.accessPoint.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 139 Network.router.eth[1].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 140 Network.router.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 141 Network.router.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 142 Network.wiredHost2.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 143 Network.wiredHost2.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 144 Network.wiredHost2.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+0	36647 219 0 354 0 1 11 0 1 5 5
+1	36866 279 0 354 0 1 17 0 2 8 10
+2	37145 294 0 354 0 1 17 0 1024 3136 1869312
+3	37439 230 0 354 0 1 12 0 2 7 9
+4	37669 326 0 353 0 1 16 0 1 7 7
+5	37995 9 0 0 0 0 1 0 0 0 0
+6	38004 9 0 0 0 0 1 0 0 0 0
+7	38013 9 0 0 0 0 1 0 0 0 0
+8	38022 87 0 373 0 1.00000672 8 0 1 1 1
+9	38109 89 0 373 0 1.00000672 8 0 368 368 135424
+10	38198 10 0 0 0 0 1 0 0 0 0
+11	38208 10 0 0 0 0 1 0 0 0 0
+12	38218 10 0 0 0 0 1 0 0 0 0
+13	38228 104 0 386 0 1.00001162 8 0 1 1 1
+14	38332 106 0 386 0 1.00001162 8 0 448 448 200704
+15	38438 10 0 0 0 0 1 0 0 0 0
+16	38448 10 0 0 0 0 1 0 0 0 0
+17	38458 10 0 0 0 0 1 0 0 0 0
+18	38468 50 0 0 0 0 5 0 0 0 0
+19	38518 50 0 0 0 0 5 0 0 0 0
+20	38568 71 0 371 0 1.00000581 6 0 0 0 0
+21	38639 71 0 371 0 1.00000581 6 0 0 0 0
+22	38710 710 0 313 0 0.985840561985 30 0 1 14 14
+23	39420 781 0 397 0 1.00001253 35 0 2 17 19
+24	40201 814 0 397 0 1.00001253 35 0 1312 7024 4004608
+25	41015 710 0 313 0 0.985840561985 30 0 1 14 14
+26	41725 858 0 308 0 0.985794561985 36 0 1 17 17
+27	42583 92 0 396 0 1.00001253 7 0 0 0 0
+28	42675 92 0 396 0 1.00001253 7 0 0 0 0
+29	42767 50 0 0 0 0 5 0 0 0 0
+30	42817 50 0 0 0 0 5 0 0 0 0
+31	42867 438 0 355 0 1 20 0 3 45 117
+32	43305 84 0 192 0 0.582362039873 4 0 0 0 0
+33	43389 870 0 314 0 0.985840561985 37 0 3 87 225
+34	44259 10 0 0 0 0 1 0 0 0 0
+35	44269 1258 0 355 0 1 52 0 3 77 179
+36	45527 2660 0 355 0 1 112 0 2 32 60
+37	48187 1270 0 357 0 1.00000075719 52 0 3 53 107
+38	49457 3562 0 372 0 1.00000581 146 0 2 75 143
+39	53019 11 0 0 0 0 1 31 31 31 961
+40	53030 11 0 0 0 0 1 31 31 31 961
+41	53041 418 8 397 0.085794561985 1.00001253 16 272 656 6368 2713600
+42	53459 373 8 372 0.085794561985 1.00000581 15 1 26 199 3699
+43	53832 372 10 309 0.085794561985 0.985794561985 14 0 0.000614 0.001832 9.37168e-07
+44	54204 373 10 309 0.085794561985 0.985794561985 14 272 384 5056 1852928
+45	54577 539 10 309 0.085794561985 0.985794561985 17 24000000 24000000 408000000 9.792e+15
+46	55116 437 10 309 0.085794561985 0.985794561985 17 14 48 674 29540
+47	55553 1680 11 314 0.085794561985 0.985840561985 68 0 2 68 102
+48	57233 437 14 313 0.085840561985 0.985840561985 17 14 48 674 29540
+49	57670 256 14 313 0.085840561985 0.985840561985 10 48 48 480 23040
+50	57926 256 14 313 0.085840561985 0.985840561985 10 48 48 480 23040
+51	58182 437 14 313 0.085840561985 0.985840561985 17 14 48 674 29540
+52	58619 449 14 313 0.085840561985 0.985840561985 14 4.6e-05 9.151438e-05 0.00081405752 5.2511181867138e-08
+53	59068 437 17 316 0.085841319175 0.985841319175 17 14 48 674 29540
+54	59505 437 17 316 0.085841319175 0.985841319175 17 14 48 674 29540
+55	59942 256 17 316 0.085841319175 0.985841319175 10 48 48 480 23040
+56	60198 256 17 316 0.085841319175 0.985841319175 10 48 48 480 23040
+57	60454 437 17 316 0.085841319175 0.985841319175 17 14 48 674 29540
+58	60891 74 20 188 0.180829011113 0.582362039873 3 1 4 7 21
+59	60965 166 25 372 0.1 1 10 3840 12160 50560 324812800
+60	61131 151 27 309 0.1 0.9 9 3840 12160 46720 310067200
+61	61282 135 38 349 0.280829011113 1 6 256 512 2112 820736
+62	61417 142 38 348 0.1 1 10 0 8320 10880 75776000
+63	61559 114 38 348 0.280829011113 1 5 9 24 77 1411
+64	61673 137 40 354 0.280829011113 1 6 0 0.000574 0.000908 4.41032e-07
+65	61810 135 40 354 0.280829011113 1 6 256 512 2112 820736
+66	61945 142 40 354 0.1 1 10 0 8320 10880 75776000
+67	62087 273 40 354 0.280829011113 1 9 24000000 24000000 216000000 5.184e+15
+68	62360 219 40 354 0.280829011113 1 9 14 64 256 9512
+69	62579 816 41 356 0.280829011113 1 34 0 2 35 53
+70	63395 206 44 238 0.280867011113 0.583439554253 8 14 36 192 5416
+71	63601 25 44 44 0.280867011113 0.280867011113 1 32 32 32 1024
+72	63626 25 44 44 0.280867011113 0.280867011113 1 32 32 32 1024
+73	63651 206 44 238 0.280867011113 0.583439554253 8 14 36 192 5416
+74	63857 138 44 221 0.280867011113 0.582783554253 4 3.8e-05 8.751438e-05 0.00030054314 2.4420300120353e-08
+75	63995 206 47 241 0.280867768303 0.583440311443 8 14 36 192 5416
+76	64201 206 47 241 0.280867768303 0.583440311443 8 14 36 192 5416
+77	64407 25 47 47 0.280867768303 0.280867768303 1 32 32 32 1024
+78	64432 25 47 47 0.280867768303 0.280867768303 1 32 32 32 1024
+79	64457 206 47 241 0.280867768303 0.583440311443 8 14 36 192 5416
+80	64663 181 55 227 0.281343768303 0.583394797063 7 14 48 194 6500
+81	64844 321 55 237 0.281343768303 0.583438797063 12 0 4.4e-05 0.000176 7.744e-09
+82	65165 181 58 230 0.281344525493 0.583395554253 7 14 48 194 6500
+83	65346 181 65 238 0.281388525493 0.583439554253 7 14 36 160 4392
+84	65527 181 68 241 0.281389282683 0.583440311443 7 14 36 160 4392
+85	65708 75 113 232 0.580829011113 0.583395554253 3 1 4 7 21
+86	65783 243 123 217 0.580871011113 0.582782039873 9 0 4.4e-05 0.000132 5.808e-09
+87	66026 13 319 319 1 1 1 10 10 10 100
+88	66039 13 320 320 1 1 1 10 10 10 100
+89	66052 13 321 321 1 1 1 10 10 10 100
+90	66065 13 322 322 1 1 1 10 10 10 100
+91	66078 13 323 323 1 1 1 10 10 10 100
+92	66091 13 324 324 1 1 1 10 10 10 100
+93	66104 26 326 328 1 1 2 18 18 36 648
+94	66130 26 330 332 1 1 2 18 18 36 648
+95	66156 26 334 336 1 1 2 18 18 36 648
+96	66182 26 337 338 1 1 2 28 28 56 1568
+97	66208 26 339 340 1 1 2 28 28 56 1568
+98	66234 13 341 341 1 1 1 28 28 28 784
+99	66247 26 345 346 1 1 2 28 28 56 1568
+100	66273 60 347 384 1 1.00001162 3 28 38 104 3672
+101	66333 28 348 349 1 1 2 36 36 72 2592
+102	66361 30 350 351 1 1 2 368 368 736 270848
+103	66391 148 350 350 0.1 1 10 0 0 0 0
+104	66539 42 350 373 1 1.00000672 2 0 6.72e-06 6.72e-06 4.51584e-11
+105	66581 39 350 373 1 1.00000672 2 368 368 736 270848
+106	66620 148 350 350 0.1 1 10 0 0 0 0
+107	66768 37 350 373 1 1.00000672 2 46 46 92 4232
+108	66805 63 352 386 1 1.00001162 3 368 448 1264 536832
+109	66868 148 352 352 0.1 1 10 0 0 0 0
+110	67016 35 352 385 1 1.00001162 2 0 0 0 0
+111	67051 39 352 385 1 1.00001162 2 368 448 816 336128
+112	67090 148 352 352 0.1 1 10 0 0 0 0
+113	67238 37 352 385 1 1.00001162 2 46 56 102 5252
+114	67275 46 358 387 1.00000576 1.00001248 2 64 64 128 8192
+115	67321 23 359 359 1.00000576 1.00000576 1 64 64 64 4096
+116	67344 46 360 388 1.00000581 1.00001253 2 64 64 128 8192
+117	67390 46 360 388 1.00000581 1.00001253 2 64 64 128 8192
+118	67436 23 361 361 1.00000581 1.00000581 1 64 64 64 4096
+119	67459 23 361 361 1.00000581 1.00000581 1 64 64 64 4096
+120	67482 46 362 391 1.00000581 1.00001253 2 46 46 92 4232
+121	67528 46 363 379 1.00000581 1.00001162 2 46 46 92 4232
+122	67574 23 365 365 1.00000581 1.00000581 1 28 28 28 784
+123	67597 92 366 394 1.00000581 1.00001253 4 46 46 184 8464
+124	67689 23 368 368 1.00000581 1.00000581 1 28 28 28 784
+125	67712 48 370 396 1.00000581 1.00001253 2 512 512 1024 524288
+126	67760 148 370 370 0.1 1 10 0 0 0 0
+127	67908 44 370 396 1.00000581 1.00001253 2 0 0 0 0
+128	67952 48 370 396 1.00000581 1.00001253 2 512 512 1024 524288
+129	68000 148 370 370 0.1 1 10 0 0 0 0
+130	68148 46 370 396 1.00000581 1.00001253 2 64 64 128 8192
+131	68194 24 371 371 1.00000581 1.00000581 1 368 368 368 135424
+132	68218 148 371 371 0.1 1 10 0 0 0 0
+133	68366 22 371 371 1.00000581 1.00000581 1 0 0 0 0
+134	68388 24 371 371 1.00000581 1.00000581 1 368 368 368 135424
+135	68412 148 371 371 0.1 1 10 0 0 0 0
+136	68560 23 371 371 1.00000581 1.00000581 1 46 46 46 2116
+137	68583 46 372 397 1.00000581 1.00001253 2 54 54 108 5832
+138	68629 23 375 375 1.00001157 1.00001157 1 64 64 64 4096
+139	68652 23 376 376 1.00001157 1.00001157 1 64 64 64 4096
+140	68675 23 377 377 1.00001162 1.00001162 1 64 64 64 4096
+141	68698 23 377 377 1.00001162 1.00001162 1 64 64 64 4096
+142	68721 23 378 378 1.00001162 1.00001162 1 64 64 64 4096
+143	68744 23 378 378 1.00001162 1.00001162 1 64 64 64 4096
+144	68767 23 380 380 1.00001162 1.00001162 1 46 46 46 2116
+vector 145 Network.wirelessHost1.app[1] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 146 Network.wirelessHost1.app[2] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 147 Network.wiredHost1.app[1] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 148 Network.wiredHost1.app[2] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 149 Network.wiredHost2.app[1] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 150 Network.wiredHost2.app[2] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 151 Network.router.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 152 Network.router.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 153 Network.accessPoint.eth[1].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 154 Network.accessPoint.eth[1].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+59	70650 39 397 397 1.000012548063 1.000012548063 1 104557970.42141 104557970.42141 104557970.42141 1.0932369178645e+16
+60	70689 40 397 397 1 1.000012548063 2 0 3840 3840 14745600
+62	70729 39 397 397 1.000012548063 1.000012548063 1 81606220.816711 81606220.816711 81606220.816711 6.6595752759858e+15
+66	70768 39 397 397 1.000012548063 1.000012548063 1 81606220.816711 81606220.816711 81606220.816711 6.6595752759858e+15
+103	70807 40 397 397 1.000012548063 1.000012548063 1 58654471.212011 58654471.212011 58654471.212011 3.4403469931606e+15
+106	70847 40 397 397 1.000012548063 1.000012548063 1 58654471.212011 58654471.212011 58654471.212011 3.4403469931606e+15
+109	70887 40 397 397 1.000012548063 1.000012548063 1 100732678.82063 100732678.82063 100732678.82063 1.014707258238e+16
+112	70927 40 397 397 1.000012548063 1.000012548063 1 65029957.213317 65029957.213317 65029957.213317 4.2288953351658e+15
+126	70967 40 397 397 1.000012548063 1.000012548063 1 81606220.816711 81606220.816711 81606220.816711 6.6595752759858e+15
+129	71007 40 397 397 1.000012548063 1.000012548063 1 81606220.816711 81606220.816711 81606220.816711 6.6595752759858e+15
+132	71047 40 397 397 1.000012548063 1.000012548063 1 29327235.606005 29327235.606005 29327235.606005 8.6008674829016e+14
+135	71087 40 397 397 1.000012548063 1.000012548063 1 29327235.606005 29327235.606005 29327235.606005 8.6008674829016e+14
+145	71127 174 397 397 0.1 1.000012548063 11 0 0 0 0
+146	71301 174 397 397 0.1 1.000012548063 11 0 0 0 0
+147	71475 174 397 397 0.1 1.000012548063 11 0 0 0 0
+148	71649 174 397 397 0.1 1.000012548063 11 0 0 0 0
+149	71823 174 397 397 0.1 1.000012548063 11 0 0 0 0
+150	71997 174 397 397 0.1 1.000012548063 11 0 0 0 0
+151	72171 174 397 397 0.1 1.000012548063 11 0 0 0 0
+152	72345 174 397 397 0.1 1.000012548063 11 0 0 0 0
+153	72519 174 397 397 0.1 1.000012548063 11 0 0 0 0
+154	72693 174 397 397 0.1 1.000012548063 11 0 0 0 0
+
