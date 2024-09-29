@@ -1,0 +1,2421 @@
+version 3
+run General-0-20240930-02:30:22-20964
+attr configname General
+attr datetime 20240930-02:30:22
+attr datetimef 20240930-023022
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Tictoc
+attr processid 20964
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config network Tictoc
+config sim-time-limit 20s
+config *.radioMedium.signalAnalogRepresentation "\"unitDisk\""
+config *.host*.ipv4.arp.typename GlobalArp
+config *.hostA.numApps 1
+config *.hostA.app[0].typename UdpBasicApp
+config *.hostA.app[0].destAddresses "\"hostB\""
+config *.hostA.app[0].destPort 5000
+config *.hostA.app[0].messageLength 1000B
+config *.hostA.app[0].sendInterval exponential(12ms)
+config *.hostA.app[0].packetName "\"UDPData\""
+config *.hostB.numApps 1
+config *.hostB.app[0].typename UdpSink
+config *.hostB.app[0].localPort 5000
+config *.host*.wlan[0].typename AckingWirelessInterface
+config *.host*.wlan[0].mac.useAck false
+config *.host*.wlan[0].mac.fullDuplex false
+config *.host*.wlan[0].radio.signalAnalogRepresentation "\"unitDisk\""
+config *.host*.wlan[0].radio.transmitter.analogModel.communicationRange 500m
+config *.host*.wlan[0].radio.receiver.ignoreInterference true
+config *.host*.wlan[0].mac.headerLength 23B
+config *.host*.**.bitrate 1Mbps
+
+par Tictoc.visualizer.sceneVisualizer typename "\"inet.visualizer.canvas.scene.SceneCanvasVisualizer\""
+par Tictoc.visualizer.sceneVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.sceneVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.sceneVisualizer tags "\"\""
+par Tictoc.visualizer.sceneVisualizer physicalEnvironmentModule "\"physicalEnvironment\""
+par Tictoc.visualizer.sceneVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.sceneVisualizer axisLength "nan m"
+attr mutable ""
+attr unit m
+par Tictoc.visualizer.sceneVisualizer animationSpeed 0
+par Tictoc.visualizer.sceneVisualizer sceneMinX "nan m"
+attr unit m
+par Tictoc.visualizer.sceneVisualizer sceneMinY "nan m"
+attr unit m
+par Tictoc.visualizer.sceneVisualizer sceneMinZ "nan m"
+attr unit m
+par Tictoc.visualizer.sceneVisualizer sceneMaxX "nan m"
+attr unit m
+par Tictoc.visualizer.sceneVisualizer sceneMaxY "nan m"
+attr unit m
+par Tictoc.visualizer.sceneVisualizer sceneMaxZ "nan m"
+attr unit m
+par Tictoc.visualizer.sceneVisualizer zIndex 0
+par Tictoc.visualizer.sceneVisualizer viewAngle "\"x right y down z out\""
+attr mutable ""
+par Tictoc.visualizer.sceneVisualizer viewScale "\"1 1\""
+attr mutable ""
+par Tictoc.visualizer.sceneVisualizer viewTranslation "\"0 0\""
+attr mutable ""
+par Tictoc.visualizer.sceneVisualizer descriptionFigure "\"\""
+par Tictoc.visualizer.physicalEnvironmentVisualizer typename "\"inet.visualizer.canvas.environment.PhysicalEnvironmentCanvasVisualizer\""
+par Tictoc.visualizer.physicalEnvironmentVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.physicalEnvironmentVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.physicalEnvironmentVisualizer tags "\"\""
+par Tictoc.visualizer.physicalEnvironmentVisualizer physicalEnvironmentModule "\"physicalEnvironment\""
+par Tictoc.visualizer.physicalEnvironmentVisualizer displayObjects true
+par Tictoc.visualizer.physicalEnvironmentVisualizer zIndex 0
+par Tictoc.visualizer.networkNodeVisualizer typename "\"inet.visualizer.canvas.scene.NetworkNodeCanvasVisualizer\""
+par Tictoc.visualizer.networkNodeVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.networkNodeVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.networkNodeVisualizer tags "\"\""
+par Tictoc.visualizer.networkNodeVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.networkNodeVisualizer annotationSpacing 4
+par Tictoc.visualizer.networkNodeVisualizer placementPenalty 10
+par Tictoc.visualizer.networkNodeVisualizer zIndex 0
+par Tictoc.visualizer.networkConnectionVisualizer typename "\"inet.visualizer.canvas.scene.NetworkConnectionCanvasVisualizer\""
+par Tictoc.visualizer.networkConnectionVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.networkConnectionVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.networkConnectionVisualizer tags "\"\""
+par Tictoc.visualizer.networkConnectionVisualizer displayNetworkConnections true
+par Tictoc.visualizer.networkConnectionVisualizer nodeFilter "\"\""
+attr mutable ""
+par Tictoc.visualizer.networkConnectionVisualizer lineColor "\"black\""
+par Tictoc.visualizer.networkConnectionVisualizer lineStyle "\"solid\""
+par Tictoc.visualizer.networkConnectionVisualizer lineWidth 1
+par Tictoc.visualizer.networkConnectionVisualizer zIndex 0
+par Tictoc.visualizer.mobilityVisualizer typename "\"inet.visualizer.canvas.mobility.MobilityCanvasVisualizer\""
+par Tictoc.visualizer.mobilityVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.mobilityVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.mobilityVisualizer tags "\"\""
+par Tictoc.visualizer.mobilityVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.mobilityVisualizer displayMobility true
+par Tictoc.visualizer.mobilityVisualizer animationSpeed 0
+par Tictoc.visualizer.mobilityVisualizer moduleFilter "\"**.mobility\""
+attr mutable ""
+par Tictoc.visualizer.mobilityVisualizer displayPositions false
+par Tictoc.visualizer.mobilityVisualizer positionCircleRadius 4
+par Tictoc.visualizer.mobilityVisualizer positionCircleLineWidth 1
+par Tictoc.visualizer.mobilityVisualizer positionCircleLineColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.mobilityVisualizer positionCircleFillColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.mobilityVisualizer displayOrientations false
+par Tictoc.visualizer.mobilityVisualizer orientationPieRadius 32
+par Tictoc.visualizer.mobilityVisualizer orientationPieSize 0.2
+par Tictoc.visualizer.mobilityVisualizer orientationPieOpacity 0.25
+par Tictoc.visualizer.mobilityVisualizer orientationLineColor "\"black\""
+par Tictoc.visualizer.mobilityVisualizer orientationLineStyle "\"solid\""
+par Tictoc.visualizer.mobilityVisualizer orientationLineWidth 1
+par Tictoc.visualizer.mobilityVisualizer orientationFillColor "\"blue\""
+par Tictoc.visualizer.mobilityVisualizer displayVelocities false
+par Tictoc.visualizer.mobilityVisualizer velocityArrowScale 1
+par Tictoc.visualizer.mobilityVisualizer velocityLineColor "\"black\""
+par Tictoc.visualizer.mobilityVisualizer velocityLineStyle "\"solid\""
+par Tictoc.visualizer.mobilityVisualizer velocityLineWidth 1
+par Tictoc.visualizer.mobilityVisualizer displayMovementTrails false
+par Tictoc.visualizer.mobilityVisualizer movementTrailLineColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.mobilityVisualizer movementTrailLineStyle "\"solid\""
+par Tictoc.visualizer.mobilityVisualizer movementTrailLineWidth 1
+par Tictoc.visualizer.mobilityVisualizer trailLength 100
+par Tictoc.visualizer.mobilityVisualizer zIndex 0
+par Tictoc.visualizer.statisticVisualizer typename "\"inet.visualizer.canvas.common.StatisticCanvasVisualizer\""
+par Tictoc.visualizer.statisticVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.statisticVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.statisticVisualizer tags "\"\""
+par Tictoc.visualizer.statisticVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.statisticVisualizer displayStatistics true
+par Tictoc.visualizer.statisticVisualizer signalName "\"\""
+par Tictoc.visualizer.statisticVisualizer statisticName "\"\""
+par Tictoc.visualizer.statisticVisualizer statisticUnit "\"\""
+par Tictoc.visualizer.statisticVisualizer statisticExpression "\"\""
+par Tictoc.visualizer.statisticVisualizer sourceFilter "\"**\""
+attr mutable ""
+par Tictoc.visualizer.statisticVisualizer format "\"%n: %v %u\""
+attr mutable ""
+par Tictoc.visualizer.statisticVisualizer unit "\"\""
+par Tictoc.visualizer.statisticVisualizer font "\"<default>\""
+par Tictoc.visualizer.statisticVisualizer textColor "\"black\""
+par Tictoc.visualizer.statisticVisualizer backgroundColor "\"white\""
+par Tictoc.visualizer.statisticVisualizer opacity 1
+par Tictoc.visualizer.statisticVisualizer placementHint "\"top\""
+par Tictoc.visualizer.statisticVisualizer placementPriority 0
+par Tictoc.visualizer.statisticVisualizer zIndex 10
+par Tictoc.visualizer.statisticVisualizer propertyName "\"\""
+par Tictoc.visualizer.statisticVisualizer propertyIndex "\"\""
+par Tictoc.visualizer.infoVisualizer typename "\"inet.visualizer.canvas.common.InfoCanvasVisualizer\""
+par Tictoc.visualizer.infoVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.infoVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.infoVisualizer tags "\"\""
+par Tictoc.visualizer.infoVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.infoVisualizer displayInfos true
+par Tictoc.visualizer.infoVisualizer modules "\"\""
+attr mutable ""
+par Tictoc.visualizer.infoVisualizer format "\"%t\""
+attr mutable ""
+par Tictoc.visualizer.infoVisualizer font "\"<default>\""
+par Tictoc.visualizer.infoVisualizer textColor "\"black\""
+par Tictoc.visualizer.infoVisualizer backgroundColor "\"white\""
+par Tictoc.visualizer.infoVisualizer opacity 1
+par Tictoc.visualizer.infoVisualizer placementHint "\"top\""
+par Tictoc.visualizer.infoVisualizer placementPriority 0
+par Tictoc.visualizer.infoVisualizer zIndex 10
+par Tictoc.visualizer.energyStorageVisualizer typename "\"inet.visualizer.canvas.power.EnergyStorageCanvasVisualizer\""
+par Tictoc.visualizer.energyStorageVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.energyStorageVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.energyStorageVisualizer tags "\"\""
+par Tictoc.visualizer.energyStorageVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.energyStorageVisualizer displayEnergyStorages false
+par Tictoc.visualizer.energyStorageVisualizer energyStorageFilter "\"**\""
+par Tictoc.visualizer.energyStorageVisualizer color "\"green\""
+par Tictoc.visualizer.energyStorageVisualizer width 8
+par Tictoc.visualizer.energyStorageVisualizer height 24
+par Tictoc.visualizer.energyStorageVisualizer spacing 2
+par Tictoc.visualizer.energyStorageVisualizer placementHint "\"right\""
+par Tictoc.visualizer.energyStorageVisualizer placementPriority 0
+par Tictoc.visualizer.energyStorageVisualizer zIndex 10
+par Tictoc.visualizer.mediumVisualizer typename "\"inet.visualizer.canvas.physicallayer.MediumCanvasVisualizer\""
+par Tictoc.visualizer.mediumVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.mediumVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.mediumVisualizer tags "\"\""
+par Tictoc.visualizer.mediumVisualizer mediumModule "\"radioMedium\""
+par Tictoc.visualizer.mediumVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.mediumVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.mediumVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.mediumVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Tictoc.visualizer.mediumVisualizer displaySignals false
+par Tictoc.visualizer.mediumVisualizer signalColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.mediumVisualizer signalPropagationAnimationSpeed "nan "
+attr mutable ""
+par Tictoc.visualizer.mediumVisualizer signalPropagationAnimationTime 1s
+attr unit s
+par Tictoc.visualizer.mediumVisualizer signalPropagationAdditionalTime 0s
+attr unit s
+par Tictoc.visualizer.mediumVisualizer signalTransmissionAnimationSpeed "nan "
+attr mutable ""
+par Tictoc.visualizer.mediumVisualizer signalTransmissionAnimationTime 1s
+attr unit s
+par Tictoc.visualizer.mediumVisualizer signalAnimationSpeedChangeTimeMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Tictoc.visualizer.mediumVisualizer signalAnimationSpeedChangeTime 1s
+attr unit s
+par Tictoc.visualizer.mediumVisualizer displaySignalDepartures false
+par Tictoc.visualizer.mediumVisualizer signalDepartureImage "\"misc/signal_departure.png\""
+par Tictoc.visualizer.mediumVisualizer signalDeparturePlacementHint "\"topCenter\""
+par Tictoc.visualizer.mediumVisualizer signalDeparturePlacementPriority 1
+par Tictoc.visualizer.mediumVisualizer displaySignalArrivals false
+par Tictoc.visualizer.mediumVisualizer signalArrivalImage "\"misc/signal_arrival.png\""
+par Tictoc.visualizer.mediumVisualizer signalArrivalPlacementHint "\"topCenter\""
+par Tictoc.visualizer.mediumVisualizer signalArrivalPlacementPriority -1
+par Tictoc.visualizer.mediumVisualizer displayCommunicationRanges false
+par Tictoc.visualizer.mediumVisualizer communicationRangeLineColor "\"blue\""
+par Tictoc.visualizer.mediumVisualizer communicationRangeLineStyle "\"solid\""
+par Tictoc.visualizer.mediumVisualizer communicationRangeLineWidth 1
+par Tictoc.visualizer.mediumVisualizer displayInterferenceRanges false
+par Tictoc.visualizer.mediumVisualizer interferenceRangeLineColor "\"gray\""
+par Tictoc.visualizer.mediumVisualizer interferenceRangeLineStyle "\"solid\""
+par Tictoc.visualizer.mediumVisualizer interferenceRangeLineWidth 1
+par Tictoc.visualizer.mediumVisualizer autoPowerAxis true
+par Tictoc.visualizer.mediumVisualizer signalMinPower "inf dBmW"
+attr unit dBmW
+par Tictoc.visualizer.mediumVisualizer signalMaxPower 0dBmW
+attr unit dBmW
+par Tictoc.visualizer.mediumVisualizer signalMinPowerDensity "inf dBmWpMHz"
+attr unit dBmWpMHz
+par Tictoc.visualizer.mediumVisualizer signalMaxPowerDensity "-inf dBmWpMHz"
+attr unit dBmWpMHz
+par Tictoc.visualizer.mediumVisualizer autoTimeAxis true
+par Tictoc.visualizer.mediumVisualizer signalMinTime 0s
+attr unit s
+par Tictoc.visualizer.mediumVisualizer signalMaxTime 0s
+attr unit s
+par Tictoc.visualizer.mediumVisualizer autoFrequencyAxis true
+par Tictoc.visualizer.mediumVisualizer signalMinFrequency "inf Hz"
+attr unit Hz
+par Tictoc.visualizer.mediumVisualizer signalMaxFrequency "-inf Hz"
+attr unit Hz
+par Tictoc.visualizer.mediumVisualizer displayMainPowerDensityMap false
+par Tictoc.visualizer.mediumVisualizer mainPowerDensityMapPixmapDensity 1
+par Tictoc.visualizer.mediumVisualizer mainPowerDensityMapMinX 0
+par Tictoc.visualizer.mediumVisualizer mainPowerDensityMapMaxX "nan "
+par Tictoc.visualizer.mediumVisualizer mainPowerDensityMapMinY 0
+par Tictoc.visualizer.mediumVisualizer mainPowerDensityMapMaxY "nan "
+par Tictoc.visualizer.mediumVisualizer mainPowerDensityMapZ 0
+par Tictoc.visualizer.mediumVisualizer mainPowerDensityMapFigureXTickCount 3
+par Tictoc.visualizer.mediumVisualizer mainPowerDensityMapFigureYTickCount 3
+par Tictoc.visualizer.mediumVisualizer displayPowerDensityMaps false
+par Tictoc.visualizer.mediumVisualizer powerDensityMapMode "\"auto\""
+attr enum total,signal,auto
+par Tictoc.visualizer.mediumVisualizer powerDensityMapPixelMode "\"mean\""
+attr enum sample,partition,mean
+par Tictoc.visualizer.mediumVisualizer powerDensityMapApproximationSize 10
+par Tictoc.visualizer.mediumVisualizer powerDensityMapCenterFrequency "nan Hz"
+attr mutable ""
+attr unit Hz
+par Tictoc.visualizer.mediumVisualizer powerDensityMapBandwidth 0Hz
+attr mutable ""
+attr unit Hz
+par Tictoc.visualizer.mediumVisualizer powerDensityMapFigureWidth 200
+par Tictoc.visualizer.mediumVisualizer powerDensityMapFigureHeight 120
+par Tictoc.visualizer.mediumVisualizer powerDensityMapPixmapWidth 200
+par Tictoc.visualizer.mediumVisualizer powerDensityMapPixmapHeight 120
+par Tictoc.visualizer.mediumVisualizer powerDensityMapZ 0
+par Tictoc.visualizer.mediumVisualizer powerDensityMapFigureXTickCount 3
+par Tictoc.visualizer.mediumVisualizer powerDensityMapFigureYTickCount 3
+par Tictoc.visualizer.mediumVisualizer displaySpectrums false
+par Tictoc.visualizer.mediumVisualizer spectrumMode "\"auto\""
+attr enum total,signal,auto
+par Tictoc.visualizer.mediumVisualizer spectrumFigureWidth 200
+par Tictoc.visualizer.mediumVisualizer spectrumFigureHeight 120
+par Tictoc.visualizer.mediumVisualizer spectrumFigureXTickCount 3
+par Tictoc.visualizer.mediumVisualizer spectrumFigureYTickCount 5
+par Tictoc.visualizer.mediumVisualizer spectrumFigureInterpolationSize 5
+par Tictoc.visualizer.mediumVisualizer spectrumPlacementHint "\"bottomCenter\""
+par Tictoc.visualizer.mediumVisualizer spectrumPlacementPriority -1
+par Tictoc.visualizer.mediumVisualizer displaySpectrograms false
+par Tictoc.visualizer.mediumVisualizer spectrogramMode "\"auto\""
+attr enum total,signal,auto
+par Tictoc.visualizer.mediumVisualizer spectrogramPixelMode "\"mean\""
+attr enum sample,partition,mean
+par Tictoc.visualizer.mediumVisualizer spectrogramFigureWidth 200
+par Tictoc.visualizer.mediumVisualizer spectrogramFigureHeight 120
+par Tictoc.visualizer.mediumVisualizer spectrogramPixmapWidth 200
+par Tictoc.visualizer.mediumVisualizer spectrogramPixmapHeight 120
+par Tictoc.visualizer.mediumVisualizer spectrogramFigureXTickCount 3
+par Tictoc.visualizer.mediumVisualizer spectrogramFigureYTickCount 5
+par Tictoc.visualizer.mediumVisualizer spectrogramPlacementHint "\"bottomCenter\""
+par Tictoc.visualizer.mediumVisualizer spectrogramPlacementPriority -1
+par Tictoc.visualizer.mediumVisualizer zIndex 0
+par Tictoc.visualizer.mediumVisualizer signalShape "\"ring\""
+attr enum ring,sphere
+par Tictoc.visualizer.mediumVisualizer signalOpacity 0.5
+par Tictoc.visualizer.mediumVisualizer signalRingCount 20
+par Tictoc.visualizer.mediumVisualizer signalRingSize 50m
+attr unit m
+par Tictoc.visualizer.mediumVisualizer signalFadingDistance 50m
+attr unit m
+par Tictoc.visualizer.mediumVisualizer signalFadingFactor 1.2
+par Tictoc.visualizer.mediumVisualizer signalWaveCount 20
+par Tictoc.visualizer.mediumVisualizer signalWaveLength 50m
+attr unit m
+par Tictoc.visualizer.mediumVisualizer signalWaveWidth 10m
+attr unit m
+par Tictoc.visualizer.mediumVisualizer signalWaveFadingAnimationSpeedFactor 1
+par Tictoc.visualizer.mediumVisualizer displayCommunicationHeat false
+par Tictoc.visualizer.obstacleLossVisualizer typename "\"inet.visualizer.canvas.physicallayer.TracingObstacleLossCanvasVisualizer\""
+par Tictoc.visualizer.obstacleLossVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.obstacleLossVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.obstacleLossVisualizer tags "\"\""
+par Tictoc.visualizer.obstacleLossVisualizer displayIntersections false
+par Tictoc.visualizer.obstacleLossVisualizer intersectionLineColor "\"red\""
+par Tictoc.visualizer.obstacleLossVisualizer intersectionLineStyle "\"solid\""
+par Tictoc.visualizer.obstacleLossVisualizer intersectionLineWidth 1
+par Tictoc.visualizer.obstacleLossVisualizer displayFaceNormalVectors false
+par Tictoc.visualizer.obstacleLossVisualizer faceNormalLineColor "\"grey\""
+par Tictoc.visualizer.obstacleLossVisualizer faceNormalLineStyle "\"solid\""
+par Tictoc.visualizer.obstacleLossVisualizer faceNormalLineWidth 1
+par Tictoc.visualizer.obstacleLossVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Tictoc.visualizer.obstacleLossVisualizer fadeOutTime 1s
+attr unit s
+par Tictoc.visualizer.obstacleLossVisualizer fadeOutAnimationSpeed 0
+par Tictoc.visualizer.obstacleLossVisualizer zIndex 0
+par Tictoc.visualizer.packetDropVisualizer typename "\"inet.visualizer.canvas.common.PacketDropCanvasVisualizer\""
+par Tictoc.visualizer.packetDropVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.packetDropVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.packetDropVisualizer tags "\"\""
+par Tictoc.visualizer.packetDropVisualizer displayPacketDrops false
+par Tictoc.visualizer.packetDropVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.packetDropVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.packetDropVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Tictoc.visualizer.packetDropVisualizer detailsFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.packetDropVisualizer icon "\"msg/packet_s\""
+par Tictoc.visualizer.packetDropVisualizer iconTintAmount 1
+par Tictoc.visualizer.packetDropVisualizer iconTintColor "\"dark\""
+par Tictoc.visualizer.packetDropVisualizer labelFormat "\"%n\""
+attr mutable ""
+par Tictoc.visualizer.packetDropVisualizer labelFont "\"<default>\""
+par Tictoc.visualizer.packetDropVisualizer labelColor "\"black\""
+par Tictoc.visualizer.packetDropVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Tictoc.visualizer.packetDropVisualizer fadeOutTime 1s
+attr unit s
+par Tictoc.visualizer.packetDropVisualizer fadeOutAnimationSpeed 0
+par Tictoc.visualizer.packetDropVisualizer zIndex 10
+par Tictoc.visualizer.packetDropVisualizer dx 32
+par Tictoc.visualizer.packetDropVisualizer dy 64
+par Tictoc.visualizer.packetFlowVisualizer typename "\"inet.visualizer.canvas.flow.PacketFlowCanvasVisualizer\""
+par Tictoc.visualizer.packetFlowVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.packetFlowVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.packetFlowVisualizer tags "\"\""
+par Tictoc.visualizer.packetFlowVisualizer displayRoutes false
+par Tictoc.visualizer.packetFlowVisualizer startPathSignal "\"packetFlowStarted\""
+par Tictoc.visualizer.packetFlowVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par Tictoc.visualizer.packetFlowVisualizer endPathSignal "\"packetFlowEnded\""
+par Tictoc.visualizer.packetFlowVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.packetFlowVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Tictoc.visualizer.packetFlowVisualizer lineColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.packetFlowVisualizer lineStyle "\"dashed\""
+par Tictoc.visualizer.packetFlowVisualizer lineWidth 3
+par Tictoc.visualizer.packetFlowVisualizer lineSmooth false
+par Tictoc.visualizer.packetFlowVisualizer lineShift 16
+par Tictoc.visualizer.packetFlowVisualizer lineShiftMode "\"normal\""
+par Tictoc.visualizer.packetFlowVisualizer lineContactSpacing 3
+par Tictoc.visualizer.packetFlowVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Tictoc.visualizer.packetFlowVisualizer labelFormat "\"%L %p pk (%l)\""
+par Tictoc.visualizer.packetFlowVisualizer labelFont "\"<default>, 8px\""
+par Tictoc.visualizer.packetFlowVisualizer labelColor "\"\""
+par Tictoc.visualizer.packetFlowVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Tictoc.visualizer.packetFlowVisualizer fadeOutTime 0s
+attr unit s
+par Tictoc.visualizer.packetFlowVisualizer fadeOutAnimationSpeed 0
+par Tictoc.visualizer.packetFlowVisualizer zIndex 4
+par Tictoc.visualizer.queueVisualizer typename "\"inet.visualizer.canvas.common.QueueCanvasVisualizer\""
+par Tictoc.visualizer.queueVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.queueVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.queueVisualizer tags "\"\""
+par Tictoc.visualizer.queueVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.queueVisualizer displayQueues false
+par Tictoc.visualizer.queueVisualizer queueFilter "\"**\""
+par Tictoc.visualizer.queueVisualizer color "\"blue\""
+par Tictoc.visualizer.queueVisualizer width 8
+par Tictoc.visualizer.queueVisualizer height 24
+par Tictoc.visualizer.queueVisualizer spacing 2
+par Tictoc.visualizer.queueVisualizer placementHint "\"right\""
+par Tictoc.visualizer.queueVisualizer placementPriority 0
+par Tictoc.visualizer.queueVisualizer zIndex 10
+par Tictoc.visualizer.gateScheduleVisualizer typename "\"inet.visualizer.canvas.common.GateScheduleCanvasVisualizer\""
+par Tictoc.visualizer.gateScheduleVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.gateScheduleVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.gateScheduleVisualizer tags "\"\""
+par Tictoc.visualizer.gateScheduleVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.gateScheduleVisualizer displayGateSchedules false
+par Tictoc.visualizer.gateScheduleVisualizer labelFormat "\"%i %D\""
+par Tictoc.visualizer.gateScheduleVisualizer gateFilter "\"**\""
+par Tictoc.visualizer.gateScheduleVisualizer width 100
+par Tictoc.visualizer.gateScheduleVisualizer height 8
+par Tictoc.visualizer.gateScheduleVisualizer spacing 2
+par Tictoc.visualizer.gateScheduleVisualizer placementHint "\"right\""
+par Tictoc.visualizer.gateScheduleVisualizer placementPriority 0
+par Tictoc.visualizer.gateScheduleVisualizer displayDuration 0s
+attr mutable ""
+attr unit s
+par Tictoc.visualizer.gateScheduleVisualizer currentTimePosition 50
+par Tictoc.visualizer.gateScheduleVisualizer zIndex 10
+par Tictoc.visualizer.radioVisualizer typename "\"inet.visualizer.canvas.physicallayer.RadioCanvasVisualizer\""
+par Tictoc.visualizer.radioVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.radioVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.radioVisualizer tags "\"\""
+par Tictoc.visualizer.radioVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.radioVisualizer displayRadios false
+par Tictoc.visualizer.radioVisualizer displayRadioMode true
+par Tictoc.visualizer.radioVisualizer displayReceptionState true
+par Tictoc.visualizer.radioVisualizer displayTransmissionState true
+par Tictoc.visualizer.radioVisualizer displayAntennaLobes false
+par Tictoc.visualizer.radioVisualizer radioFilter "\"**\""
+attr mutable ""
+par Tictoc.visualizer.radioVisualizer radioModeImages "\"block/process_vs block/timer_vs block/wrx_vs block/wtx_vs block/wrxtx_vs block/cogwheel_vs\""
+par Tictoc.visualizer.radioVisualizer receptionStateImages "\"- - misc/receiving misc/receiving\""
+par Tictoc.visualizer.radioVisualizer transmissionStateImages "\"- - misc/transmitting\""
+par Tictoc.visualizer.radioVisualizer width 16
+par Tictoc.visualizer.radioVisualizer height 16
+par Tictoc.visualizer.radioVisualizer placementHint "\"bottomRight\""
+par Tictoc.visualizer.radioVisualizer placementPriority 0
+par Tictoc.visualizer.radioVisualizer antennaLobeNormalize false
+par Tictoc.visualizer.radioVisualizer antennaLobeRelativeLabels false
+par Tictoc.visualizer.radioVisualizer antennaLobePlaneGlobal true
+par Tictoc.visualizer.radioVisualizer antennaLobePlane "\"view\""
+attr enum view,xy,xz,yz
+par Tictoc.visualizer.radioVisualizer antennaLobeMode "\"logarithmic\""
+attr enum logarithmic,linear
+par Tictoc.visualizer.radioVisualizer antennaLobeLogarithmicBase 10
+par Tictoc.visualizer.radioVisualizer antennaLobeLogarithmicScale 100
+par Tictoc.visualizer.radioVisualizer antennaLobeRadius 100
+par Tictoc.visualizer.radioVisualizer antennaLobeStep 10deg
+attr unit deg
+par Tictoc.visualizer.radioVisualizer antennaLobeOpacity 0.25
+par Tictoc.visualizer.radioVisualizer antennaLobeLineSmooth true
+par Tictoc.visualizer.radioVisualizer antennaLobeLineColor "\"black\""
+par Tictoc.visualizer.radioVisualizer antennaLobeLineStyle "\"solid\""
+par Tictoc.visualizer.radioVisualizer antennaLobeLineWidth 1
+par Tictoc.visualizer.radioVisualizer antennaLobeFillColor "\"white\""
+par Tictoc.visualizer.radioVisualizer zIndex 10
+par Tictoc.visualizer.physicalLinkVisualizer typename "\"inet.visualizer.canvas.physicallayer.PhysicalLinkCanvasVisualizer\""
+par Tictoc.visualizer.physicalLinkVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.physicalLinkVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.physicalLinkVisualizer tags "\"\""
+par Tictoc.visualizer.physicalLinkVisualizer displayLinks false
+par Tictoc.visualizer.physicalLinkVisualizer activityLevel "\"service\""
+attr enum service,peer,protocol
+par Tictoc.visualizer.physicalLinkVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.physicalLinkVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.physicalLinkVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Tictoc.visualizer.physicalLinkVisualizer lineColor "\"olive\""
+par Tictoc.visualizer.physicalLinkVisualizer lineStyle "\"dotted\""
+par Tictoc.visualizer.physicalLinkVisualizer lineWidth 3
+par Tictoc.visualizer.physicalLinkVisualizer lineShift 16
+par Tictoc.visualizer.physicalLinkVisualizer lineShiftMode "\"normal\""
+par Tictoc.visualizer.physicalLinkVisualizer lineContactSpacing 3
+par Tictoc.visualizer.physicalLinkVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Tictoc.visualizer.physicalLinkVisualizer labelFormat "\"%n\""
+par Tictoc.visualizer.physicalLinkVisualizer labelFont "\"<default>, 8px\""
+par Tictoc.visualizer.physicalLinkVisualizer labelColor "\"olive\""
+par Tictoc.visualizer.physicalLinkVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Tictoc.visualizer.physicalLinkVisualizer fadeOutTime 1s
+attr unit s
+par Tictoc.visualizer.physicalLinkVisualizer fadeOutAnimationSpeed 0
+par Tictoc.visualizer.physicalLinkVisualizer holdAnimationTime 0s
+attr unit s
+par Tictoc.visualizer.physicalLinkVisualizer zIndex 1
+par Tictoc.visualizer.interfaceTableVisualizer typename "\"inet.visualizer.canvas.linklayer.InterfaceTableCanvasVisualizer\""
+par Tictoc.visualizer.interfaceTableVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.interfaceTableVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.interfaceTableVisualizer tags "\"\""
+par Tictoc.visualizer.interfaceTableVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.interfaceTableVisualizer displayInterfaceTables false
+par Tictoc.visualizer.interfaceTableVisualizer displayWiredInterfacesAtConnections true
+par Tictoc.visualizer.interfaceTableVisualizer displayBackground false
+par Tictoc.visualizer.interfaceTableVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.interfaceTableVisualizer interfaceFilter "\"not(lo*)\""
+attr mutable ""
+par Tictoc.visualizer.interfaceTableVisualizer format "\"%N %\\\\%a%/%l\""
+attr mutable ""
+par Tictoc.visualizer.interfaceTableVisualizer placementHint "\"top\""
+par Tictoc.visualizer.interfaceTableVisualizer placementPriority 0
+par Tictoc.visualizer.interfaceTableVisualizer font "\"<default>\""
+par Tictoc.visualizer.interfaceTableVisualizer textColor "\"#005030\""
+par Tictoc.visualizer.interfaceTableVisualizer backgroundColor "\"white\""
+par Tictoc.visualizer.interfaceTableVisualizer opacity 1
+par Tictoc.visualizer.interfaceTableVisualizer zIndex 10
+par Tictoc.visualizer.dataLinkVisualizer typename "\"inet.visualizer.canvas.linklayer.DataLinkCanvasVisualizer\""
+par Tictoc.visualizer.dataLinkVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.dataLinkVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.dataLinkVisualizer tags "\"\""
+par Tictoc.visualizer.dataLinkVisualizer displayLinks false
+par Tictoc.visualizer.dataLinkVisualizer activityLevel "\"service\""
+attr enum service,peer,protocol
+par Tictoc.visualizer.dataLinkVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.dataLinkVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.dataLinkVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Tictoc.visualizer.dataLinkVisualizer lineColor "\"darkcyan\""
+par Tictoc.visualizer.dataLinkVisualizer lineStyle "\"solid\""
+par Tictoc.visualizer.dataLinkVisualizer lineWidth 3
+par Tictoc.visualizer.dataLinkVisualizer lineShift 16
+par Tictoc.visualizer.dataLinkVisualizer lineShiftMode "\"normal\""
+par Tictoc.visualizer.dataLinkVisualizer lineContactSpacing 3
+par Tictoc.visualizer.dataLinkVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Tictoc.visualizer.dataLinkVisualizer labelFormat "\"%n\""
+par Tictoc.visualizer.dataLinkVisualizer labelFont "\"<default>, 8px\""
+par Tictoc.visualizer.dataLinkVisualizer labelColor "\"darkcyan\""
+par Tictoc.visualizer.dataLinkVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Tictoc.visualizer.dataLinkVisualizer fadeOutTime 1s
+attr unit s
+par Tictoc.visualizer.dataLinkVisualizer fadeOutAnimationSpeed 0
+par Tictoc.visualizer.dataLinkVisualizer holdAnimationTime 0s
+attr unit s
+par Tictoc.visualizer.dataLinkVisualizer zIndex 2
+par Tictoc.visualizer.linkBreakVisualizer typename "\"inet.visualizer.canvas.linklayer.LinkBreakCanvasVisualizer\""
+par Tictoc.visualizer.linkBreakVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.linkBreakVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.linkBreakVisualizer tags "\"\""
+par Tictoc.visualizer.linkBreakVisualizer displayLinkBreaks false
+par Tictoc.visualizer.linkBreakVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.linkBreakVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.linkBreakVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Tictoc.visualizer.linkBreakVisualizer icon "\"status/stop\""
+par Tictoc.visualizer.linkBreakVisualizer iconTintAmount 0
+par Tictoc.visualizer.linkBreakVisualizer iconTintColor "\"\""
+par Tictoc.visualizer.linkBreakVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Tictoc.visualizer.linkBreakVisualizer fadeOutTime 1s
+attr unit s
+par Tictoc.visualizer.linkBreakVisualizer fadeOutAnimationSpeed 0
+par Tictoc.visualizer.linkBreakVisualizer zIndex 2
+par Tictoc.visualizer.ieee80211Visualizer typename "\"inet.visualizer.canvas.linklayer.Ieee80211CanvasVisualizer\""
+par Tictoc.visualizer.ieee80211Visualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.ieee80211Visualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.ieee80211Visualizer tags "\"\""
+par Tictoc.visualizer.ieee80211Visualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.ieee80211Visualizer displayAssociations false
+par Tictoc.visualizer.ieee80211Visualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.ieee80211Visualizer interfaceFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.ieee80211Visualizer minPower -85dBm
+attr unit dBm
+par Tictoc.visualizer.ieee80211Visualizer maxPower -50dBm
+attr unit dBm
+par Tictoc.visualizer.ieee80211Visualizer icons "\"misc/signal_power_0 misc/signal_power_1 misc/signal_power_2 misc/signal_power_3\""
+par Tictoc.visualizer.ieee80211Visualizer iconColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.ieee80211Visualizer labelFont "\"<default>\""
+par Tictoc.visualizer.ieee80211Visualizer labelColor "\"black\""
+par Tictoc.visualizer.ieee80211Visualizer placementHint "\"top\""
+par Tictoc.visualizer.ieee80211Visualizer placementPriority 0
+par Tictoc.visualizer.ieee80211Visualizer zIndex 2
+par Tictoc.visualizer.networkRouteVisualizer typename "\"inet.visualizer.canvas.networklayer.NetworkRouteCanvasVisualizer\""
+par Tictoc.visualizer.networkRouteVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.networkRouteVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.networkRouteVisualizer tags "\"\""
+par Tictoc.visualizer.networkRouteVisualizer displayRoutes false
+par Tictoc.visualizer.networkRouteVisualizer startPathSignal "\"packetReceivedFromUpper\""
+par Tictoc.visualizer.networkRouteVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par Tictoc.visualizer.networkRouteVisualizer endPathSignal "\"packetSentToUpper\""
+par Tictoc.visualizer.networkRouteVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.networkRouteVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Tictoc.visualizer.networkRouteVisualizer lineColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.networkRouteVisualizer lineStyle "\"solid\""
+par Tictoc.visualizer.networkRouteVisualizer lineWidth 3
+par Tictoc.visualizer.networkRouteVisualizer lineSmooth false
+par Tictoc.visualizer.networkRouteVisualizer lineShift 16
+par Tictoc.visualizer.networkRouteVisualizer lineShiftMode "\"normal\""
+par Tictoc.visualizer.networkRouteVisualizer lineContactSpacing 3
+par Tictoc.visualizer.networkRouteVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Tictoc.visualizer.networkRouteVisualizer labelFormat "\"%n\""
+par Tictoc.visualizer.networkRouteVisualizer labelFont "\"<default>, 8px\""
+par Tictoc.visualizer.networkRouteVisualizer labelColor "\"\""
+par Tictoc.visualizer.networkRouteVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Tictoc.visualizer.networkRouteVisualizer fadeOutTime 1s
+attr unit s
+par Tictoc.visualizer.networkRouteVisualizer fadeOutAnimationSpeed 0
+par Tictoc.visualizer.networkRouteVisualizer zIndex 3
+par Tictoc.visualizer.routingTableVisualizer typename "\"inet.visualizer.canvas.networklayer.RoutingTableCanvasVisualizer\""
+par Tictoc.visualizer.routingTableVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.routingTableVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.routingTableVisualizer tags "\"\""
+par Tictoc.visualizer.routingTableVisualizer displayRoutingTables false
+par Tictoc.visualizer.routingTableVisualizer displayRoutesIndividually true
+par Tictoc.visualizer.routingTableVisualizer displayLabels true
+par Tictoc.visualizer.routingTableVisualizer destinationFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.routingTableVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.routingTableVisualizer lineColor "\"black\""
+par Tictoc.visualizer.routingTableVisualizer lineStyle "\"solid\""
+par Tictoc.visualizer.routingTableVisualizer lineWidth 2
+par Tictoc.visualizer.routingTableVisualizer lineShift 16
+par Tictoc.visualizer.routingTableVisualizer lineShiftMode "\"normal\""
+par Tictoc.visualizer.routingTableVisualizer lineContactSpacing 3
+par Tictoc.visualizer.routingTableVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Tictoc.visualizer.routingTableVisualizer labelFormat "\"%d/%m -> %g (%n)\""
+attr mutable ""
+par Tictoc.visualizer.routingTableVisualizer labelFont "\"<default>, 8px\""
+par Tictoc.visualizer.routingTableVisualizer labelColor "\"black\""
+par Tictoc.visualizer.routingTableVisualizer zIndex 0
+par Tictoc.visualizer.transportRouteVisualizer typename "\"inet.visualizer.canvas.transportlayer.TransportRouteCanvasVisualizer\""
+par Tictoc.visualizer.transportRouteVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.transportRouteVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.transportRouteVisualizer tags "\"\""
+par Tictoc.visualizer.transportRouteVisualizer displayRoutes false
+par Tictoc.visualizer.transportRouteVisualizer startPathSignal "\"packetReceivedFromUpper\""
+par Tictoc.visualizer.transportRouteVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par Tictoc.visualizer.transportRouteVisualizer endPathSignal "\"packetSentToUpper\""
+par Tictoc.visualizer.transportRouteVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.transportRouteVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Tictoc.visualizer.transportRouteVisualizer lineColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.transportRouteVisualizer lineStyle "\"solid\""
+par Tictoc.visualizer.transportRouteVisualizer lineWidth 3
+par Tictoc.visualizer.transportRouteVisualizer lineSmooth false
+par Tictoc.visualizer.transportRouteVisualizer lineShift 16
+par Tictoc.visualizer.transportRouteVisualizer lineShiftMode "\"normal\""
+par Tictoc.visualizer.transportRouteVisualizer lineContactSpacing 3
+par Tictoc.visualizer.transportRouteVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Tictoc.visualizer.transportRouteVisualizer labelFormat "\"%n\""
+par Tictoc.visualizer.transportRouteVisualizer labelFont "\"<default>, 8px\""
+par Tictoc.visualizer.transportRouteVisualizer labelColor "\"\""
+par Tictoc.visualizer.transportRouteVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Tictoc.visualizer.transportRouteVisualizer fadeOutTime 1s
+attr unit s
+par Tictoc.visualizer.transportRouteVisualizer fadeOutAnimationSpeed 0
+par Tictoc.visualizer.transportRouteVisualizer zIndex 4
+par Tictoc.visualizer.transportConnectionVisualizer typename "\"inet.visualizer.canvas.transportlayer.TransportConnectionCanvasVisualizer\""
+par Tictoc.visualizer.transportConnectionVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.transportConnectionVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.transportConnectionVisualizer tags "\"\""
+par Tictoc.visualizer.transportConnectionVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Tictoc.visualizer.transportConnectionVisualizer displayTransportConnections false
+par Tictoc.visualizer.transportConnectionVisualizer sourceNodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.transportConnectionVisualizer sourcePortFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.transportConnectionVisualizer destinationNodeFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.transportConnectionVisualizer destinationPortFilter "\"*\""
+attr mutable ""
+par Tictoc.visualizer.transportConnectionVisualizer icon "\"misc/marker_s\""
+par Tictoc.visualizer.transportConnectionVisualizer iconColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.transportConnectionVisualizer labelFont "\"<default>\""
+par Tictoc.visualizer.transportConnectionVisualizer labelColor "\"black\""
+par Tictoc.visualizer.transportConnectionVisualizer placementHint "\"top\""
+par Tictoc.visualizer.transportConnectionVisualizer placementPriority 0
+par Tictoc.visualizer.transportConnectionVisualizer zIndex 4
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer typename "\"inet.visualizer.canvas.configurator.FailureProtectionConfigurationCanvasVisualizer\""
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer tags "\"\""
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer displayTrees false
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer lineColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer lineStyle "\"solid\""
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer lineWidth 3
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer lineSmooth false
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer lineShift 16
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer lineShiftMode "\"normal\""
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer lineContactSpacing 3
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer failureProtectionConfiguratorModule "\"failureProtectionConfigurator\""
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer streamFilter "\"*\""
+par Tictoc.visualizer.failureProtectionConfigurationVisualizer zIndex 3
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer typename "\"inet.visualizer.canvas.configurator.StreamRedundancyConfigurationCanvasVisualizer\""
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer visualizationTargetModule "\"^.^\""
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer visualizationSubjectModule "\"^.^\""
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer tags "\"\""
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer displayTrees false
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer lineColor "\"dark\""
+attr enum light,dark
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer lineStyle "\"solid\""
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer lineWidth 3
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer lineSmooth false
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer lineShift 16
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer lineShiftMode "\"normal\""
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer lineContactSpacing 3
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer streamRedundancyConfiguratorModule "\"streamRedundancyConfigurator\""
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer streamFilter "\"*\""
+par Tictoc.visualizer.streamRedundancyConfigurationVisualizer zIndex 3
+par Tictoc.visualizer typename "\"inet.visualizer.canvas.integrated.IntegratedCanvasVisualizer\""
+par Tictoc.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator\""
+par Tictoc.configurator minLinkWeight 0.001
+par Tictoc.configurator configureIsolatedNetworksSeparatly false
+par Tictoc.configurator config "<config>...</config> at content:1"
+par Tictoc.configurator assignAddresses true
+par Tictoc.configurator assignUniqueAddresses true
+par Tictoc.configurator assignDisjunctSubnetAddresses true
+par Tictoc.configurator addStaticRoutes true
+par Tictoc.configurator addDefaultRoutes true
+par Tictoc.configurator addSubnetRoutes true
+par Tictoc.configurator addDirectRoutes true
+par Tictoc.configurator optimizeRoutes true
+par Tictoc.configurator dumpTopology false
+par Tictoc.configurator dumpLinks false
+par Tictoc.configurator dumpAddresses false
+par Tictoc.configurator dumpRoutes false
+par Tictoc.configurator dumpConfig "\"\""
+par Tictoc.radioMedium.propagation typename "\"inet.physicallayer.wireless.common.propagation.ConstantSpeedPropagation\""
+par Tictoc.radioMedium.propagation propagationSpeed 2.99792e+08mps
+attr unit mps
+par Tictoc.radioMedium.propagation ignoreMovementDuringTransmission true
+par Tictoc.radioMedium.propagation ignoreMovementDuringPropagation true
+par Tictoc.radioMedium.propagation ignoreMovementDuringReception true
+scalar Tictoc.radioMedium.propagation "Arrival computation count" 5
+par Tictoc.radioMedium.analogModel typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskAnalogModel\""
+par Tictoc.radioMedium.pathLoss typename "\"inet.physicallayer.wireless.common.pathloss.FreeSpacePathLoss\""
+par Tictoc.radioMedium.pathLoss alpha 2
+par Tictoc.radioMedium.pathLoss systemLoss 0dB
+attr unit dB
+par Tictoc.radioMedium.mediumLimitCache typename "\"inet.physicallayer.wireless.common.medium.MediumLimitCache\""
+par Tictoc.radioMedium.mediumLimitCache centerFrequency "nan Hz"
+attr unit Hz
+par Tictoc.radioMedium.mediumLimitCache maxSpeed "nan mps"
+attr unit mps
+par Tictoc.radioMedium.mediumLimitCache maxTransmissionPower "nan W"
+attr unit W
+par Tictoc.radioMedium.mediumLimitCache minInterferencePower "nan dBm"
+attr unit dBm
+par Tictoc.radioMedium.mediumLimitCache minReceptionPower "nan dBm"
+attr unit dBm
+par Tictoc.radioMedium.mediumLimitCache maxAntennaGain 0dB
+attr unit dB
+par Tictoc.radioMedium.mediumLimitCache minInterferenceTime 1e-12s
+attr unit s
+par Tictoc.radioMedium.mediumLimitCache maxTransmissionDuration 0.01s
+attr unit s
+par Tictoc.radioMedium.mediumLimitCache maxCommunicationRange "nan m"
+attr unit m
+par Tictoc.radioMedium.mediumLimitCache maxInterferenceRange "nan m"
+attr unit m
+par Tictoc.radioMedium.communicationCache typename "\"inet.physicallayer.wireless.common.communicationcache.VectorCommunicationCache\""
+par Tictoc.radioMedium typename "\"inet.physicallayer.wireless.common.medium.RadioMedium\""
+par Tictoc.radioMedium physicalEnvironmentModule "\"physicalEnvironment\""
+par Tictoc.radioMedium signalAnalogRepresentation "\"unitDisk\""
+attr enum unitDisk,scalar,dimensional
+par Tictoc.radioMedium rangeFilter "\"\""
+par Tictoc.radioMedium radioModeFilter false
+par Tictoc.radioMedium listeningFilter false
+par Tictoc.radioMedium macAddressFilter false
+par Tictoc.radioMedium recordTransmissionLog false
+par Tictoc.radioMedium recordReceptionLog false
+scalar Tictoc.radioMedium "transmission count" 5
+scalar Tictoc.radioMedium "signal send count" 5
+scalar Tictoc.radioMedium "reception computation count" 5
+scalar Tictoc.radioMedium "interference computation count" 24
+scalar Tictoc.radioMedium "reception decision computation count" 0
+scalar Tictoc.radioMedium "listening decision computation count" 19
+scalar Tictoc.radioMedium "reception cache hit" 77.272727272727
+attr unit %
+scalar Tictoc.radioMedium "interference cache hit" nan
+attr unit %
+scalar Tictoc.radioMedium "noise cache hit" nan
+attr unit %
+scalar Tictoc.radioMedium "snir cache hit" nan
+attr unit %
+scalar Tictoc.radioMedium "reception decision cache hit" nan
+attr unit %
+scalar Tictoc.radioMedium "reception result cache hit" nan
+attr unit %
+par Tictoc.hostA.radioIn[0].channel typename "\"ned.IdealChannel\""
+par Tictoc.hostA.mobility typename "\"inet.mobility.static.StationaryMobility\""
+par Tictoc.hostA.mobility subjectModule "\"^\""
+par Tictoc.hostA.mobility coordinateSystemModule "\"\""
+par Tictoc.hostA.mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par Tictoc.hostA.mobility updateDisplayString true
+par Tictoc.hostA.mobility constraintAreaMinX "-inf m"
+attr unit m
+par Tictoc.hostA.mobility constraintAreaMinY "-inf m"
+attr unit m
+par Tictoc.hostA.mobility constraintAreaMinZ "-inf m"
+attr unit m
+par Tictoc.hostA.mobility constraintAreaMaxX "inf m"
+attr unit m
+par Tictoc.hostA.mobility constraintAreaMaxY "inf m"
+attr unit m
+par Tictoc.hostA.mobility constraintAreaMaxZ "inf m"
+attr unit m
+par Tictoc.hostA.mobility initialX "nan m"
+attr unit m
+par Tictoc.hostA.mobility initialY "nan m"
+attr unit m
+par Tictoc.hostA.mobility initialZ 0m
+attr unit m
+par Tictoc.hostA.mobility initialLatitude "nan deg"
+attr unit deg
+par Tictoc.hostA.mobility initialLongitude "nan deg"
+attr unit deg
+par Tictoc.hostA.mobility initialAltitude 0m
+attr unit m
+par Tictoc.hostA.mobility initialHeading 0deg
+attr unit deg
+par Tictoc.hostA.mobility initialElevation 0deg
+attr unit deg
+par Tictoc.hostA.mobility initialBank 0deg
+attr unit deg
+par Tictoc.hostA.mobility initFromDisplayString true
+par Tictoc.hostA.mobility updateFromDisplayString true
+par Tictoc.hostA.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par Tictoc.hostA.interfaceTable displayAddresses false
+par Tictoc.hostA.cb typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostA.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostA.cb forwardServiceRegistration true
+par Tictoc.hostA.cb forwardProtocolRegistration true
+par Tictoc.hostA.bl typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostA.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostA.bl forwardServiceRegistration true
+par Tictoc.hostA.bl forwardProtocolRegistration true
+par Tictoc.hostA.li typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostA.li displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostA.li forwardServiceRegistration true
+par Tictoc.hostA.li forwardProtocolRegistration true
+par Tictoc.hostA.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostA.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostA.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par Tictoc.hostA.lo[0].lo interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.lo[0].lo mtu 4470B
+attr unit B
+scalar Tictoc.hostA.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar Tictoc.hostA.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar Tictoc.hostA.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Tictoc.hostA.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par Tictoc.hostA.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par Tictoc.hostA.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par Tictoc.hostA.lo[0] recordPcap false
+par Tictoc.hostA.lo[0] numPcapRecorders 0
+par Tictoc.hostA.lo[0] interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+scalar Tictoc.hostA.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar Tictoc.hostA.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar Tictoc.hostA.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar Tictoc.hostA.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par Tictoc.hostA.wlan[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostA.wlan[0].radioIn.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostA.wlan[0].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostA.wlan[0].queue typename "\"inet.queueing.queue.DropTailQueue\""
+par Tictoc.hostA.wlan[0].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par Tictoc.hostA.wlan[0].queue packetCapacity 100
+par Tictoc.hostA.wlan[0].queue dataCapacity -1b
+attr unit b
+par Tictoc.hostA.wlan[0].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par Tictoc.hostA.wlan[0].queue comparatorClass "\"\""
+par Tictoc.hostA.wlan[0].queue bufferModule "\"\""
+scalar Tictoc.hostA.wlan[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar Tictoc.hostA.wlan[0].queue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar Tictoc.hostA.wlan[0].queue queueLength:timeavg 0.041796890820613
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar Tictoc.hostA.wlan[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar Tictoc.hostA.wlan[0].queue queueBitLength:max 8224
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar Tictoc.hostA.wlan[0].queue queueBitLength:timeavg 343.73763010872
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic Tictoc.hostA.wlan[0].queue queueingTime:histogram
+field count 5
+field mean 0.0006978375594
+field stddev 0.0009611769051988
+field min 0
+field max 0.00189141816
+field sum 0.003489187797
+field sqrsum 6.1303304688969e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	3
+bin	5e-05	0
+bin	0.0001	0
+bin	0.00015	0
+bin	0.0002	0
+bin	0.00025	0
+bin	0.0003	0
+bin	0.00035	0
+bin	0.0004	0
+bin	0.00045	0
+bin	0.0005	0
+bin	0.00055	0
+bin	0.0006	0
+bin	0.00065	0
+bin	0.0007	0
+bin	0.00075	0
+bin	0.0008	0
+bin	0.00085	0
+bin	0.0009	0
+bin	0.00095	0
+bin	0.001	0
+bin	0.00105	0
+bin	0.0011	0
+bin	0.00115	0
+bin	0.0012	0
+bin	0.00125	0
+bin	0.0013	0
+bin	0.00135	0
+bin	0.0014	0
+bin	0.00145	0
+bin	0.0015	0
+bin	0.00155	1
+bin	0.0016	0
+bin	0.00165	0
+bin	0.0017	0
+bin	0.00175	0
+bin	0.0018	0
+bin	0.00185	1
+bin	0.0019	0
+bin	0.00195	0
+bin	0.002	0
+bin	0.00205	0
+bin	0.0021	0
+bin	0.00215	0
+bin	0.0022	0
+bin	0.00225	0
+bin	0.0023	0
+bin	0.00235	0
+bin	0.0024	0
+scalar Tictoc.hostA.wlan[0].queue outgoingPackets:count 5
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar Tictoc.hostA.wlan[0].queue outgoingPacketLengths:sum 41120
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic Tictoc.hostA.wlan[0].queue outgoingPacketLengths:histogram
+field count 5
+field mean 8224
+field stddev 0
+field min 8224
+field max 8224
+field sum 41120
+field sqrsum 338170880
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	8223	0
+bin	8224	5
+bin	8225	0
+statistic Tictoc.hostA.wlan[0].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Tictoc.hostA.wlan[0].queue incomingPackets:count 5
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar Tictoc.hostA.wlan[0].queue incomingPacketLengths:sum 41120
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic Tictoc.hostA.wlan[0].queue incomingPacketLengths:histogram
+field count 5
+field mean 8224
+field stddev 0
+field min 8224
+field max 8224
+field sum 41120
+field sqrsum 338170880
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	8223	0
+bin	8224	5
+bin	8225	0
+scalar Tictoc.hostA.wlan[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar Tictoc.hostA.wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par Tictoc.hostA.wlan[0].mac typename "\"inet.linklayer.acking.AckingMac\""
+par Tictoc.hostA.wlan[0].mac interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.wlan[0].mac address "\"auto\""
+attr mutable ""
+par Tictoc.hostA.wlan[0].mac bitrate 1e+06bps
+attr unit bps
+par Tictoc.hostA.wlan[0].mac mtu 4470B
+attr unit B
+par Tictoc.hostA.wlan[0].mac headerLength 23B
+attr unit B
+par Tictoc.hostA.wlan[0].mac promiscuous false
+par Tictoc.hostA.wlan[0].mac fullDuplex false
+par Tictoc.hostA.wlan[0].mac useAck false
+par Tictoc.hostA.wlan[0].mac ackTimeout 0.1s
+attr unit s
+scalar Tictoc.hostA.wlan[0].mac rcvdPkFromLl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, count"
+scalar Tictoc.hostA.wlan[0].mac rcvdPkFromLl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar Tictoc.hostA.wlan[0].mac sentDownPk:count 5
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets sent to lower layer, count"
+scalar Tictoc.hostA.wlan[0].mac sentDownPk:sum(packetBytes) 5255
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar Tictoc.hostA.wlan[0].mac rcvdPkFromHl:count 5
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar Tictoc.hostA.wlan[0].mac rcvdPkFromHl:sum(packetBytes) 5140
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar Tictoc.hostA.wlan[0].mac passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Tictoc.hostA.wlan[0].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar Tictoc.hostA.wlan[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar Tictoc.hostA.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar Tictoc.hostA.wlan[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar Tictoc.hostA.wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar Tictoc.hostA.wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar Tictoc.hostA.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar Tictoc.hostA.wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source linkBroken
+attr title "link break, count"
+par Tictoc.hostA.wlan[0].radio.antenna typename "\"inet.physicallayer.wireless.common.antenna.IsotropicAntenna\""
+par Tictoc.hostA.wlan[0].radio.antenna mobilityModule "\"^.^.^.mobility\""
+par Tictoc.hostA.wlan[0].radio.antenna numAntennas 1
+par Tictoc.hostA.wlan[0].radio.transmitter typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskTransmitter\""
+par Tictoc.hostA.wlan[0].radio.transmitter preambleDuration 0s
+attr unit s
+par Tictoc.hostA.wlan[0].radio.transmitter headerLength 96b
+attr unit b
+par Tictoc.hostA.wlan[0].radio.transmitter bitrate 1e+06bps
+attr unit bps
+par Tictoc.hostA.wlan[0].radio.transmitter communicationRange 100m
+attr unit m
+par Tictoc.hostA.wlan[0].radio.transmitter interferenceRange 100m
+attr unit m
+par Tictoc.hostA.wlan[0].radio.transmitter detectionRange 100m
+attr unit m
+par Tictoc.hostA.wlan[0].radio.receiver typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskReceiver\""
+par Tictoc.hostA.wlan[0].radio.receiver ignoreInterference true
+par Tictoc.hostA.wlan[0].radio typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskRadio\""
+par Tictoc.hostA.wlan[0].radio radioMediumModule "\"radioMedium\""
+par Tictoc.hostA.wlan[0].radio energySourceModule "\"\""
+par Tictoc.hostA.wlan[0].radio initialRadioMode "\"off\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par Tictoc.hostA.wlan[0].radio switchingTimes "\"ms 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\""
+par Tictoc.hostA.wlan[0].radio sendRawBytes false
+par Tictoc.hostA.wlan[0].radio separateTransmissionParts false
+par Tictoc.hostA.wlan[0].radio separateReceptionParts false
+par Tictoc.hostA.wlan[0].radio displayCommunicationRange false
+par Tictoc.hostA.wlan[0].radio displayInterferenceRange false
+statistic Tictoc.hostA.wlan[0].radio minSnir:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Tictoc.hostA.wlan[0].radio packetErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Tictoc.hostA.wlan[0].radio bitErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Tictoc.hostA.wlan[0].radio symbolErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Tictoc.hostA.wlan[0].radio transmissionState:count 20
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+scalar Tictoc.hostA.wlan[0].radio receptionState:count 11
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar Tictoc.hostA.wlan[0].radio radioMode:count 13
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+par Tictoc.hostA.wlan[0] typename "\"inet.linklayer.acking.AckingWirelessInterface\""
+par Tictoc.hostA.wlan[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par Tictoc.hostA.wlan[0] recordPcap false
+par Tictoc.hostA.wlan[0] numPcapRecorders 0
+par Tictoc.hostA.wlan[0] interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.wlan[0] energySourceModule "\"\""
+par Tictoc.hostA.wlan[0] bitrate 1e+06bps
+attr unit bps
+scalar Tictoc.hostA.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar Tictoc.hostA.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar Tictoc.hostA.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar Tictoc.hostA.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par Tictoc.hostA.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostA.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par Tictoc.hostA.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par Tictoc.hostA.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostA.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par Tictoc.hostA.ipv4.configurator interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.ipv4.configurator routingTableModule "\"Tictoc.hostA.ipv4.routingTable\""
+par Tictoc.hostA.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par Tictoc.hostA.ipv4.configurator configureRoutingTable true
+par Tictoc.hostA.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par Tictoc.hostA.ipv4.routingTable interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.ipv4.routingTable routerId "\"auto\""
+par Tictoc.hostA.ipv4.routingTable netmaskRoutes "\"*\""
+par Tictoc.hostA.ipv4.routingTable forwarding false
+par Tictoc.hostA.ipv4.routingTable multicastForwarding false
+par Tictoc.hostA.ipv4.routingTable useAdminDist false
+par Tictoc.hostA.ipv4.routingTable routingFile "\"\""
+par Tictoc.hostA.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par Tictoc.hostA.ipv4.natTable networkProtocolModule "\"^.ip\""
+par Tictoc.hostA.ipv4.natTable config "<config/> at content:1"
+par Tictoc.hostA.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostA.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostA.ipv4.up forwardServiceRegistration true
+par Tictoc.hostA.ipv4.up forwardProtocolRegistration true
+par Tictoc.hostA.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par Tictoc.hostA.ipv4.igmp interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.ipv4.igmp routingTableModule "\"Tictoc.hostA.ipv4.routingTable\""
+par Tictoc.hostA.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par Tictoc.hostA.ipv4.igmp enabled true
+par Tictoc.hostA.ipv4.igmp robustnessVariable 2
+par Tictoc.hostA.ipv4.igmp queryInterval 125s
+attr unit s
+par Tictoc.hostA.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par Tictoc.hostA.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par Tictoc.hostA.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par Tictoc.hostA.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par Tictoc.hostA.ipv4.igmp startupQueryCount 2
+par Tictoc.hostA.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par Tictoc.hostA.ipv4.igmp lastMemberQueryCount 2
+par Tictoc.hostA.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par Tictoc.hostA.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par Tictoc.hostA.ipv4.icmp interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.ipv4.icmp routingTableModule "\"Tictoc.hostA.ipv4.routingTable\""
+par Tictoc.hostA.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par Tictoc.hostA.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par Tictoc.hostA.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostA.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostA.ipv4.mp forwardServiceRegistration true
+par Tictoc.hostA.ipv4.mp forwardProtocolRegistration true
+par Tictoc.hostA.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par Tictoc.hostA.ipv4.ip interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.ipv4.ip routingTableModule "\"Tictoc.hostA.ipv4.routingTable\""
+par Tictoc.hostA.ipv4.ip arpModule "\"Tictoc.hostA.ipv4.arp\""
+par Tictoc.hostA.ipv4.ip icmpModule "\"Tictoc.hostA.ipv4.icmp\""
+par Tictoc.hostA.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par Tictoc.hostA.ipv4.ip timeToLive 32
+par Tictoc.hostA.ipv4.ip multicastTimeToLive 32
+par Tictoc.hostA.ipv4.ip fragmentTimeout 60s
+attr unit s
+par Tictoc.hostA.ipv4.ip limitedBroadcast false
+par Tictoc.hostA.ipv4.ip directBroadcastInterfaces "\"\""
+scalar Tictoc.hostA.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar Tictoc.hostA.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar Tictoc.hostA.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar Tictoc.hostA.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar Tictoc.hostA.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar Tictoc.hostA.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar Tictoc.hostA.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar Tictoc.hostA.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar Tictoc.hostA.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar Tictoc.hostA.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar Tictoc.hostA.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar Tictoc.hostA.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par Tictoc.hostA.ipv4.arp typename "\"inet.networklayer.arp.ipv4.GlobalArp\""
+par Tictoc.hostA.ipv4.arp interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.ipv4.arp addressType "\"ipv4\""
+attr enum ipv4,ipv6,mac,moduleid,modulepath
+par Tictoc.hostA.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostA.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostA.ipv4.lp forwardServiceRegistration true
+par Tictoc.hostA.ipv4.lp forwardProtocolRegistration true
+par Tictoc.hostA.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par Tictoc.hostA.ipv4 forwarding false
+par Tictoc.hostA.ipv4 multicastForwarding false
+par Tictoc.hostA.ipv4 interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.ipv4 displayStringTextFormat "\"%i\""
+par Tictoc.hostA.nl typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostA.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostA.nl forwardServiceRegistration true
+par Tictoc.hostA.nl forwardProtocolRegistration true
+par Tictoc.hostA.udp typename "\"inet.transportlayer.udp.Udp\""
+par Tictoc.hostA.udp interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.udp icmpModule "\"^.ipv4.icmp\""
+par Tictoc.hostA.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par Tictoc.hostA.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+par Tictoc.hostA.udp defaultMulticastLoop true
+scalar Tictoc.hostA.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar Tictoc.hostA.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar Tictoc.hostA.udp packetSent:count 5
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar Tictoc.hostA.udp packetSent:sum(packetBytes) 5040
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar Tictoc.hostA.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar Tictoc.hostA.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar Tictoc.hostA.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+par Tictoc.hostA.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par Tictoc.hostA.tcp crcMode "\"declared\""
+attr enum declared,computed
+par Tictoc.hostA.tcp advertisedWindow 7504
+par Tictoc.hostA.tcp delayedAcksEnabled false
+par Tictoc.hostA.tcp nagleEnabled true
+par Tictoc.hostA.tcp limitedTransmitEnabled false
+par Tictoc.hostA.tcp increasedIWEnabled false
+par Tictoc.hostA.tcp sackSupport false
+par Tictoc.hostA.tcp windowScalingSupport false
+par Tictoc.hostA.tcp windowScalingFactor -1
+par Tictoc.hostA.tcp timestampSupport false
+par Tictoc.hostA.tcp mss 536
+par Tictoc.hostA.tcp msl 120s
+attr unit s
+par Tictoc.hostA.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par Tictoc.hostA.tcp useDataNotification false
+par Tictoc.hostA.tcp dupthresh 3
+par Tictoc.hostA.tcp initialSsthresh 4294967295
+par Tictoc.hostA.tcp stopOperationExtraTime 0s
+attr unit s
+par Tictoc.hostA.tcp stopOperationTimeout 2s
+attr unit s
+par Tictoc.hostA.tcp ecnWillingness false
+par Tictoc.hostA.tcp dctcpGamma 0.0625
+par Tictoc.hostA.tn typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostA.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostA.tn forwardServiceRegistration true
+par Tictoc.hostA.tn forwardProtocolRegistration true
+par Tictoc.hostA.app[0] typename "\"inet.applications.udpapp.UdpBasicApp\""
+par Tictoc.hostA.app[0] interfaceTableModule "\"Tictoc.hostA.interfaceTable\""
+par Tictoc.hostA.app[0] clockModule "\"\""
+par Tictoc.hostA.app[0] localPort -1
+par Tictoc.hostA.app[0] destAddresses "\"hostB\""
+par Tictoc.hostA.app[0] localAddress "\"\""
+par Tictoc.hostA.app[0] packetName "\"UDPData\""
+par Tictoc.hostA.app[0] destPort 5000
+par Tictoc.hostA.app[0] messageLength 1000B
+attr unit B
+par Tictoc.hostA.app[0] startTime 0.0223153s
+attr unit s
+par Tictoc.hostA.app[0] stopTime -1s
+attr unit s
+par Tictoc.hostA.app[0] sendInterval exponential(12ms)
+attr unit s
+par Tictoc.hostA.app[0] timeToLive -1
+par Tictoc.hostA.app[0] dontFragment false
+par Tictoc.hostA.app[0] dscp -1
+par Tictoc.hostA.app[0] tos -1
+par Tictoc.hostA.app[0] multicastInterface "\"\""
+par Tictoc.hostA.app[0] receiveBroadcast false
+par Tictoc.hostA.app[0] joinLocalMulticastGroups false
+par Tictoc.hostA.app[0] stopOperationExtraTime -1s
+attr unit s
+par Tictoc.hostA.app[0] stopOperationTimeout 2s
+attr unit s
+scalar Tictoc.hostA.app[0] "packets sent" 5
+scalar Tictoc.hostA.app[0] "packets received" 0
+scalar Tictoc.hostA.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar Tictoc.hostA.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic Tictoc.hostA.app[0] rcvdPkLifetime:stats
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode stats
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+scalar Tictoc.hostA.app[0] packetSent:count 5
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar Tictoc.hostA.app[0] packetSent:sum(packetBytes) 5000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+par Tictoc.hostA.at typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostA.at displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostA.at forwardServiceRegistration true
+par Tictoc.hostA.at forwardProtocolRegistration true
+par Tictoc.hostA typename "\"inet.node.inet.WirelessHost\""
+par Tictoc.hostA hasStatus false
+par Tictoc.hostA osgModel "\"\""
+par Tictoc.hostA osgModelColor "\"\""
+par Tictoc.hostA canvasImage "\"\""
+par Tictoc.hostA canvasImageColor "\"\""
+par Tictoc.hostA recordPcap false
+par Tictoc.hostA numPcapRecorders 0
+par Tictoc.hostA numLoInterfaces 1
+par Tictoc.hostA numWlanInterfaces 1
+par Tictoc.hostA numEthInterfaces 0
+par Tictoc.hostA numPppInterfaces 0
+par Tictoc.hostA numTunInterfaces 0
+par Tictoc.hostA numVirtInterfaces 0
+par Tictoc.hostA fcsMode "\"declared\""
+attr enum declared,computed
+par Tictoc.hostA hasIpv4 true
+par Tictoc.hostA hasIpv6 false
+par Tictoc.hostA hasGn false
+par Tictoc.hostA forwarding false
+par Tictoc.hostA multicastForwarding false
+par Tictoc.hostA hasUdp true
+par Tictoc.hostA hasTcp true
+par Tictoc.hostA hasSctp false
+par Tictoc.hostA numApps 1
+par Tictoc.hostB.radioIn[0].channel typename "\"ned.IdealChannel\""
+par Tictoc.hostB.mobility typename "\"inet.mobility.static.StationaryMobility\""
+par Tictoc.hostB.mobility subjectModule "\"^\""
+par Tictoc.hostB.mobility coordinateSystemModule "\"\""
+par Tictoc.hostB.mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par Tictoc.hostB.mobility updateDisplayString true
+par Tictoc.hostB.mobility constraintAreaMinX "-inf m"
+attr unit m
+par Tictoc.hostB.mobility constraintAreaMinY "-inf m"
+attr unit m
+par Tictoc.hostB.mobility constraintAreaMinZ "-inf m"
+attr unit m
+par Tictoc.hostB.mobility constraintAreaMaxX "inf m"
+attr unit m
+par Tictoc.hostB.mobility constraintAreaMaxY "inf m"
+attr unit m
+par Tictoc.hostB.mobility constraintAreaMaxZ "inf m"
+attr unit m
+par Tictoc.hostB.mobility initialX "nan m"
+attr unit m
+par Tictoc.hostB.mobility initialY "nan m"
+attr unit m
+par Tictoc.hostB.mobility initialZ 0m
+attr unit m
+par Tictoc.hostB.mobility initialLatitude "nan deg"
+attr unit deg
+par Tictoc.hostB.mobility initialLongitude "nan deg"
+attr unit deg
+par Tictoc.hostB.mobility initialAltitude 0m
+attr unit m
+par Tictoc.hostB.mobility initialHeading 0deg
+attr unit deg
+par Tictoc.hostB.mobility initialElevation 0deg
+attr unit deg
+par Tictoc.hostB.mobility initialBank 0deg
+attr unit deg
+par Tictoc.hostB.mobility initFromDisplayString true
+par Tictoc.hostB.mobility updateFromDisplayString true
+par Tictoc.hostB.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par Tictoc.hostB.interfaceTable displayAddresses false
+par Tictoc.hostB.cb typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostB.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostB.cb forwardServiceRegistration true
+par Tictoc.hostB.cb forwardProtocolRegistration true
+par Tictoc.hostB.bl typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostB.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostB.bl forwardServiceRegistration true
+par Tictoc.hostB.bl forwardProtocolRegistration true
+par Tictoc.hostB.li typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostB.li displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostB.li forwardServiceRegistration true
+par Tictoc.hostB.li forwardProtocolRegistration true
+par Tictoc.hostB.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostB.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostB.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par Tictoc.hostB.lo[0].lo interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.lo[0].lo mtu 4470B
+attr unit B
+scalar Tictoc.hostB.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar Tictoc.hostB.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar Tictoc.hostB.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Tictoc.hostB.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par Tictoc.hostB.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par Tictoc.hostB.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par Tictoc.hostB.lo[0] recordPcap false
+par Tictoc.hostB.lo[0] numPcapRecorders 0
+par Tictoc.hostB.lo[0] interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+scalar Tictoc.hostB.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar Tictoc.hostB.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar Tictoc.hostB.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar Tictoc.hostB.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par Tictoc.hostB.wlan[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostB.wlan[0].radioIn.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostB.wlan[0].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostB.wlan[0].queue typename "\"inet.queueing.queue.DropTailQueue\""
+par Tictoc.hostB.wlan[0].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par Tictoc.hostB.wlan[0].queue packetCapacity 100
+par Tictoc.hostB.wlan[0].queue dataCapacity -1b
+attr unit b
+par Tictoc.hostB.wlan[0].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par Tictoc.hostB.wlan[0].queue comparatorClass "\"\""
+par Tictoc.hostB.wlan[0].queue bufferModule "\"\""
+scalar Tictoc.hostB.wlan[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar Tictoc.hostB.wlan[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar Tictoc.hostB.wlan[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar Tictoc.hostB.wlan[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar Tictoc.hostB.wlan[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar Tictoc.hostB.wlan[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic Tictoc.hostB.wlan[0].queue queueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Tictoc.hostB.wlan[0].queue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar Tictoc.hostB.wlan[0].queue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic Tictoc.hostB.wlan[0].queue outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Tictoc.hostB.wlan[0].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Tictoc.hostB.wlan[0].queue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar Tictoc.hostB.wlan[0].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic Tictoc.hostB.wlan[0].queue incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Tictoc.hostB.wlan[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar Tictoc.hostB.wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par Tictoc.hostB.wlan[0].mac typename "\"inet.linklayer.acking.AckingMac\""
+par Tictoc.hostB.wlan[0].mac interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.wlan[0].mac address "\"auto\""
+attr mutable ""
+par Tictoc.hostB.wlan[0].mac bitrate 1e+06bps
+attr unit bps
+par Tictoc.hostB.wlan[0].mac mtu 4470B
+attr unit B
+par Tictoc.hostB.wlan[0].mac headerLength 23B
+attr unit B
+par Tictoc.hostB.wlan[0].mac promiscuous false
+par Tictoc.hostB.wlan[0].mac fullDuplex false
+par Tictoc.hostB.wlan[0].mac useAck false
+par Tictoc.hostB.wlan[0].mac ackTimeout 0.1s
+attr unit s
+scalar Tictoc.hostB.wlan[0].mac rcvdPkFromLl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, count"
+scalar Tictoc.hostB.wlan[0].mac rcvdPkFromLl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar Tictoc.hostB.wlan[0].mac sentDownPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets sent to lower layer, count"
+scalar Tictoc.hostB.wlan[0].mac sentDownPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar Tictoc.hostB.wlan[0].mac rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar Tictoc.hostB.wlan[0].mac rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar Tictoc.hostB.wlan[0].mac passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Tictoc.hostB.wlan[0].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar Tictoc.hostB.wlan[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar Tictoc.hostB.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar Tictoc.hostB.wlan[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar Tictoc.hostB.wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar Tictoc.hostB.wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar Tictoc.hostB.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar Tictoc.hostB.wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source linkBroken
+attr title "link break, count"
+par Tictoc.hostB.wlan[0].radio.antenna typename "\"inet.physicallayer.wireless.common.antenna.IsotropicAntenna\""
+par Tictoc.hostB.wlan[0].radio.antenna mobilityModule "\"^.^.^.mobility\""
+par Tictoc.hostB.wlan[0].radio.antenna numAntennas 1
+par Tictoc.hostB.wlan[0].radio.transmitter typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskTransmitter\""
+par Tictoc.hostB.wlan[0].radio.transmitter preambleDuration 0s
+attr unit s
+par Tictoc.hostB.wlan[0].radio.transmitter headerLength 96b
+attr unit b
+par Tictoc.hostB.wlan[0].radio.transmitter bitrate 1e+06bps
+attr unit bps
+par Tictoc.hostB.wlan[0].radio.transmitter communicationRange 100m
+attr unit m
+par Tictoc.hostB.wlan[0].radio.transmitter interferenceRange 100m
+attr unit m
+par Tictoc.hostB.wlan[0].radio.transmitter detectionRange 100m
+attr unit m
+par Tictoc.hostB.wlan[0].radio.receiver typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskReceiver\""
+par Tictoc.hostB.wlan[0].radio.receiver ignoreInterference true
+par Tictoc.hostB.wlan[0].radio typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskRadio\""
+par Tictoc.hostB.wlan[0].radio radioMediumModule "\"radioMedium\""
+par Tictoc.hostB.wlan[0].radio energySourceModule "\"\""
+par Tictoc.hostB.wlan[0].radio initialRadioMode "\"off\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par Tictoc.hostB.wlan[0].radio switchingTimes "\"ms 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\""
+par Tictoc.hostB.wlan[0].radio sendRawBytes false
+par Tictoc.hostB.wlan[0].radio separateTransmissionParts false
+par Tictoc.hostB.wlan[0].radio separateReceptionParts false
+par Tictoc.hostB.wlan[0].radio displayCommunicationRange false
+par Tictoc.hostB.wlan[0].radio displayInterferenceRange false
+statistic Tictoc.hostB.wlan[0].radio minSnir:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Tictoc.hostB.wlan[0].radio packetErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Tictoc.hostB.wlan[0].radio bitErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Tictoc.hostB.wlan[0].radio symbolErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Tictoc.hostB.wlan[0].radio transmissionState:count 0
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+scalar Tictoc.hostB.wlan[0].radio receptionState:count 1
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar Tictoc.hostB.wlan[0].radio radioMode:count 3
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+par Tictoc.hostB.wlan[0] typename "\"inet.linklayer.acking.AckingWirelessInterface\""
+par Tictoc.hostB.wlan[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par Tictoc.hostB.wlan[0] recordPcap false
+par Tictoc.hostB.wlan[0] numPcapRecorders 0
+par Tictoc.hostB.wlan[0] interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.wlan[0] energySourceModule "\"\""
+par Tictoc.hostB.wlan[0] bitrate 1e+06bps
+attr unit bps
+scalar Tictoc.hostB.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar Tictoc.hostB.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar Tictoc.hostB.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar Tictoc.hostB.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par Tictoc.hostB.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostB.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par Tictoc.hostB.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par Tictoc.hostB.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par Tictoc.hostB.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par Tictoc.hostB.ipv4.configurator interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.ipv4.configurator routingTableModule "\"Tictoc.hostB.ipv4.routingTable\""
+par Tictoc.hostB.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par Tictoc.hostB.ipv4.configurator configureRoutingTable true
+par Tictoc.hostB.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par Tictoc.hostB.ipv4.routingTable interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.ipv4.routingTable routerId "\"auto\""
+par Tictoc.hostB.ipv4.routingTable netmaskRoutes "\"*\""
+par Tictoc.hostB.ipv4.routingTable forwarding false
+par Tictoc.hostB.ipv4.routingTable multicastForwarding false
+par Tictoc.hostB.ipv4.routingTable useAdminDist false
+par Tictoc.hostB.ipv4.routingTable routingFile "\"\""
+par Tictoc.hostB.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par Tictoc.hostB.ipv4.natTable networkProtocolModule "\"^.ip\""
+par Tictoc.hostB.ipv4.natTable config "<config/> at content:1"
+par Tictoc.hostB.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostB.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostB.ipv4.up forwardServiceRegistration true
+par Tictoc.hostB.ipv4.up forwardProtocolRegistration true
+par Tictoc.hostB.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par Tictoc.hostB.ipv4.igmp interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.ipv4.igmp routingTableModule "\"Tictoc.hostB.ipv4.routingTable\""
+par Tictoc.hostB.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par Tictoc.hostB.ipv4.igmp enabled true
+par Tictoc.hostB.ipv4.igmp robustnessVariable 2
+par Tictoc.hostB.ipv4.igmp queryInterval 125s
+attr unit s
+par Tictoc.hostB.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par Tictoc.hostB.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par Tictoc.hostB.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par Tictoc.hostB.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par Tictoc.hostB.ipv4.igmp startupQueryCount 2
+par Tictoc.hostB.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par Tictoc.hostB.ipv4.igmp lastMemberQueryCount 2
+par Tictoc.hostB.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par Tictoc.hostB.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par Tictoc.hostB.ipv4.icmp interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.ipv4.icmp routingTableModule "\"Tictoc.hostB.ipv4.routingTable\""
+par Tictoc.hostB.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par Tictoc.hostB.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par Tictoc.hostB.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostB.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostB.ipv4.mp forwardServiceRegistration true
+par Tictoc.hostB.ipv4.mp forwardProtocolRegistration true
+par Tictoc.hostB.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par Tictoc.hostB.ipv4.ip interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.ipv4.ip routingTableModule "\"Tictoc.hostB.ipv4.routingTable\""
+par Tictoc.hostB.ipv4.ip arpModule "\"Tictoc.hostB.ipv4.arp\""
+par Tictoc.hostB.ipv4.ip icmpModule "\"Tictoc.hostB.ipv4.icmp\""
+par Tictoc.hostB.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par Tictoc.hostB.ipv4.ip timeToLive 32
+par Tictoc.hostB.ipv4.ip multicastTimeToLive 32
+par Tictoc.hostB.ipv4.ip fragmentTimeout 60s
+attr unit s
+par Tictoc.hostB.ipv4.ip limitedBroadcast false
+par Tictoc.hostB.ipv4.ip directBroadcastInterfaces "\"\""
+scalar Tictoc.hostB.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar Tictoc.hostB.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar Tictoc.hostB.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar Tictoc.hostB.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar Tictoc.hostB.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar Tictoc.hostB.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar Tictoc.hostB.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar Tictoc.hostB.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar Tictoc.hostB.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar Tictoc.hostB.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar Tictoc.hostB.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar Tictoc.hostB.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par Tictoc.hostB.ipv4.arp typename "\"inet.networklayer.arp.ipv4.GlobalArp\""
+par Tictoc.hostB.ipv4.arp interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.ipv4.arp addressType "\"ipv4\""
+attr enum ipv4,ipv6,mac,moduleid,modulepath
+par Tictoc.hostB.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostB.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostB.ipv4.lp forwardServiceRegistration true
+par Tictoc.hostB.ipv4.lp forwardProtocolRegistration true
+par Tictoc.hostB.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par Tictoc.hostB.ipv4 forwarding false
+par Tictoc.hostB.ipv4 multicastForwarding false
+par Tictoc.hostB.ipv4 interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.ipv4 displayStringTextFormat "\"%i\""
+par Tictoc.hostB.nl typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostB.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostB.nl forwardServiceRegistration true
+par Tictoc.hostB.nl forwardProtocolRegistration true
+par Tictoc.hostB.udp typename "\"inet.transportlayer.udp.Udp\""
+par Tictoc.hostB.udp interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.udp icmpModule "\"^.ipv4.icmp\""
+par Tictoc.hostB.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par Tictoc.hostB.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+par Tictoc.hostB.udp defaultMulticastLoop true
+scalar Tictoc.hostB.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar Tictoc.hostB.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar Tictoc.hostB.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar Tictoc.hostB.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar Tictoc.hostB.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar Tictoc.hostB.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar Tictoc.hostB.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+par Tictoc.hostB.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par Tictoc.hostB.tcp crcMode "\"declared\""
+attr enum declared,computed
+par Tictoc.hostB.tcp advertisedWindow 7504
+par Tictoc.hostB.tcp delayedAcksEnabled false
+par Tictoc.hostB.tcp nagleEnabled true
+par Tictoc.hostB.tcp limitedTransmitEnabled false
+par Tictoc.hostB.tcp increasedIWEnabled false
+par Tictoc.hostB.tcp sackSupport false
+par Tictoc.hostB.tcp windowScalingSupport false
+par Tictoc.hostB.tcp windowScalingFactor -1
+par Tictoc.hostB.tcp timestampSupport false
+par Tictoc.hostB.tcp mss 536
+par Tictoc.hostB.tcp msl 120s
+attr unit s
+par Tictoc.hostB.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par Tictoc.hostB.tcp useDataNotification false
+par Tictoc.hostB.tcp dupthresh 3
+par Tictoc.hostB.tcp initialSsthresh 4294967295
+par Tictoc.hostB.tcp stopOperationExtraTime 0s
+attr unit s
+par Tictoc.hostB.tcp stopOperationTimeout 2s
+attr unit s
+par Tictoc.hostB.tcp ecnWillingness false
+par Tictoc.hostB.tcp dctcpGamma 0.0625
+par Tictoc.hostB.tn typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostB.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostB.tn forwardServiceRegistration true
+par Tictoc.hostB.tn forwardProtocolRegistration true
+par Tictoc.hostB.app[0] typename "\"inet.applications.udpapp.UdpSink\""
+par Tictoc.hostB.app[0] interfaceTableModule "\"Tictoc.hostB.interfaceTable\""
+par Tictoc.hostB.app[0] startTime 0s
+attr unit s
+par Tictoc.hostB.app[0] stopTime -1s
+attr unit s
+par Tictoc.hostB.app[0] localPort 5000
+par Tictoc.hostB.app[0] receiveBroadcast false
+par Tictoc.hostB.app[0] multicastGroup "\"\""
+par Tictoc.hostB.app[0] multicastSources "\"\""
+par Tictoc.hostB.app[0] stopOperationExtraTime -1s
+attr unit s
+par Tictoc.hostB.app[0] stopOperationTimeout 2s
+attr unit s
+scalar Tictoc.hostB.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar Tictoc.hostB.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic Tictoc.hostB.app[0] endToEndDelay:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+par Tictoc.hostB.at typename "\"inet.common.MessageDispatcher\""
+par Tictoc.hostB.at displayStringTextFormat "\"processed %p pk (%l)\""
+par Tictoc.hostB.at forwardServiceRegistration true
+par Tictoc.hostB.at forwardProtocolRegistration true
+par Tictoc.hostB typename "\"inet.node.inet.WirelessHost\""
+par Tictoc.hostB hasStatus false
+par Tictoc.hostB osgModel "\"\""
+par Tictoc.hostB osgModelColor "\"\""
+par Tictoc.hostB canvasImage "\"\""
+par Tictoc.hostB canvasImageColor "\"\""
+par Tictoc.hostB recordPcap false
+par Tictoc.hostB numPcapRecorders 0
+par Tictoc.hostB numLoInterfaces 1
+par Tictoc.hostB numWlanInterfaces 1
+par Tictoc.hostB numEthInterfaces 0
+par Tictoc.hostB numPppInterfaces 0
+par Tictoc.hostB numTunInterfaces 0
+par Tictoc.hostB numVirtInterfaces 0
+par Tictoc.hostB fcsMode "\"declared\""
+attr enum declared,computed
+par Tictoc.hostB hasIpv4 true
+par Tictoc.hostB hasIpv6 false
+par Tictoc.hostB hasGn false
+par Tictoc.hostB forwarding false
+par Tictoc.hostB multicastForwarding false
+par Tictoc.hostB hasUdp true
+par Tictoc.hostB hasTcp true
+par Tictoc.hostB hasSctp false
+par Tictoc.hostB numApps 1
+par Tictoc typename "\"prac.simulations.Tictoc\""
+
