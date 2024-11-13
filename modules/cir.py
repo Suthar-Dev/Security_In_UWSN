@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.signal import correlate
-from database import save_cir_to_db, load_cir_from_db
+from modules.database import save_cir_to_db, load_cir_from_db
 
 def generate_cir(num_paths=5, noise_level=0.05):
     """Simulate a multipath CIR with random delays, gains, and noise."""

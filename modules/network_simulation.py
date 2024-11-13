@@ -1,9 +1,9 @@
-from constraints import Node
-from cir import authenticate_node
-from puf import authenticate_puf
-from visualization import NetworkVisualizer
-from communication import simulate_latency
-from random import random
+from modules.constraints import Node
+from modules.cir import authenticate_node
+from modules.puf import authenticate_puf
+from modules.visualization import NetworkVisualizer
+from modules.communication import simulate_latency
+import random
 
 class Network:
     def __init__(self):
@@ -23,6 +23,8 @@ class Network:
         if cir_valid:
             node.energy -= 5  # Simulate energy consumption
             return True
+        else:
+            print("CIR Failed")
         
         # Fallback to PUF-based authentication
         challenge = [random.randint(0, 1) for _ in range(64)]
