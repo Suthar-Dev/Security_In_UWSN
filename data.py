@@ -14,7 +14,7 @@ def generate_cir_data(num_paths=5, length=100):
     return impulse_response
 
 # Connect to SQLite database (or create if it doesn't exist)
-conn = sqlite3.connect('data/cir_database.db')
+conn = sqlite3.connect('C:/Coding/fyp/UWSN_Simulation/data/cir_database.db')
 c = conn.cursor()
 
 # Create table for CIR data

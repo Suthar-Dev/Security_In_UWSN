@@ -1,7 +1,7 @@
 import sqlite3
 import numpy as np
 
-conn = sqlite3.connect('data/cir_database.db')
+conn = sqlite3.connect('C:/Coding/fyp/UWSN_Simulation/data/cir_database.db')
 c = conn.cursor()
 
 def save_cir_to_db(node_id, cir):
