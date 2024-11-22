@@ -25,9 +25,9 @@ class UnderwaterAuthenticationSystem:
         
         # Network structure
         self.authenticator_pos = np.array([50, 50, 10])
-        self.legitimate_positions = self.generate_fixed_node_positions(n_legitimate_nodes)
+        self.legitimate_positions = self.generate_random_node_positions(n_legitimate_nodes)
         self.cir_database = {}
-        self.authentication_threshold = 0.125  # Stricter threshold for static case
+        self.authentication_threshold = 0.1 # Stricter threshold for static case
 
     def calculate_sound_speed(self):
         """Calculate underwater sound speed using Del Grosso equation"""
@@ -44,17 +44,17 @@ class UnderwaterAuthenticationSystem:
                 * (1 + (base_freq**2 / (base_freq**2 + 1000**2)))
                 * (1 / (1 + self.water_depth/100)))
 
-    def generate_fixed_node_positions(self, num_nodes):
-        """Generate deterministic node positions with structured layout"""
+    def generate_random_node_positions(self, num_nodes, x_bounds = [0,100], y_bounds = [0,100], z_bounds = [0,100]):
+        
+        np.random.seed(None)
         positions = []
-        radius = 30
-        for i in range(num_nodes):
-            angle = 2 * np.pi * i / num_nodes
-            x = self.authenticator_pos[0] + radius * np.cos(angle)
-            y = self.authenticator_pos[1] + radius * np.sin(angle)
-            z = 15  # Fixed depth for static nodes
+        for _ in range(num_nodes):
+            x = np.random.uniform(*x_bounds)
+            y = np.random.uniform(*y_bounds)
+            z = np.random.uniform(*z_bounds)
             positions.append(np.array([x, y, z]))
         return np.array(positions)
+
 
     def apply_underwater_effects(self, cir):
         """Apply minimal underwater effects for static case"""
@@ -92,7 +92,7 @@ class UnderwaterAuthenticationSystem:
         # Weighted combination
         similarity = (0.7 * np.mean(normalized_mag_diff) + 
                      0.3 * np.mean(normalized_phase_diff))
-    
+        print(cir1,cir2,similarity)
         return similarity
 
     def generate_malicious_positions(self, num_nodes):
@@ -192,6 +192,7 @@ class UnderwaterAuthenticationSystem:
         return np.array(positions)
 
     def calculate_cir_similarity(self, cir1, cir2):
+        print(cir1,cir2)
         """Calculate similarity between two CIRs"""
         magnitude_diff = np.abs(np.abs(cir1) - np.abs(cir2))
         phase_diff = np.angle(cir1 * np.conj(cir2))
@@ -224,7 +225,8 @@ class UnderwaterAuthenticationSystem:
                 # Combine with position weight
                 total_distance = (weighted_mag_diff + weighted_phase_diff) * (1 + (1 - position_weight))
                 distances.append(total_distance)
-        
+            
+            print(node_id, distances,test_position)
             avg_distance = np.mean(distances)
         
             if avg_distance < min_distance:
@@ -256,7 +258,6 @@ class UnderwaterAuthenticationSystem:
                 'matched_node': auth_result['matched_node'],
                 'test_cir': auth_result['test_cir']
             })
-            
         return predictions, authentication_details
 
     def plot_network_structure(self, test_nodes=None, auth_details=None):
