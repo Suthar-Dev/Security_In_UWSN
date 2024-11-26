@@ -35,7 +35,7 @@ class UnderwaterAuthenticationSystem:
         self.authenticator_pos = np.array([50, 50, 50])
         self.legitimate_positions = self.generate_fixed_node_positions(n_legitimate_nodes)
         self.cir_database = {}
-        self.authentication_threshold = 0.05  # Increased threshold for mobile case
+        self.authentication_threshold = 0.04  # Increased threshold for mobile case
 
     def calculate_sound_speed(self):
         """Calculate underwater sound speed using Del Grosso equation"""
@@ -536,4 +536,4 @@ def run_simulation(n_legitimate=5, m_test=20):
         
         
 if __name__ == "__main__":
-    run_simulation(n_legitimate=5, m_test=10)
+    run_simulation(n_legitimate=20, m_test=100)

@@ -92,7 +92,7 @@ class UnderwaterAuthenticationSystem:
         # Weighted combination
         similarity = (0.7 * np.mean(normalized_mag_diff) + 
                      0.3 * np.mean(normalized_phase_diff))
-        print(cir1,cir2,similarity)
+        # print(cir1,cir2,similarity)
         return similarity
 
     def generate_malicious_positions(self, num_nodes):
@@ -192,7 +192,7 @@ class UnderwaterAuthenticationSystem:
         return np.array(positions)
 
     def calculate_cir_similarity(self, cir1, cir2):
-        print(cir1,cir2)
+        # print(cir1,cir2)
         """Calculate similarity between two CIRs"""
         magnitude_diff = np.abs(np.abs(cir1) - np.abs(cir2))
         phase_diff = np.angle(cir1 * np.conj(cir2))
@@ -226,7 +226,7 @@ class UnderwaterAuthenticationSystem:
                 total_distance = (weighted_mag_diff + weighted_phase_diff) * (1 + (1 - position_weight))
                 distances.append(total_distance)
             
-            print(node_id, distances,test_position)
+            # print(node_id, distances,test_position)
             avg_distance = np.mean(distances)
         
             if avg_distance < min_distance:

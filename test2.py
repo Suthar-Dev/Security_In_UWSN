@@ -386,6 +386,10 @@ def simulate_network(initialization_range=10, authentication_range=50, cir_thres
     # Authentication Phase Plot
     ax2 = fig.add_subplot(122, projection='3d')
     
+    ax2.set_xlim(-100, 200)
+    ax2.set_ylim(-100, 200)
+    ax2.set_zlim(-100, 200)
+    
     # Authentication phase simulation
     print("\n=== Starting Authentication Phase ===")
     num_legitimate_tests = 20
@@ -398,6 +402,7 @@ def simulate_network(initialization_range=10, authentication_range=50, cir_thres
     authentication_positions = {'legitimate': [], 'malicious': []}
     
     print("\n--- Testing Legitimate Node ---")
+    np.random.seed()
     for i in range(num_legitimate_tests):
         # Precise positioning for legitimate nodes on one side of authenticator's YZ plane
         legitimate_node.position = authenticator.position + np.array([50, 50, 0]) + \
